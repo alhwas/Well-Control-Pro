@@ -9,50 +9,138 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
         :root {
-            --primary: #3c452f; --primary-dark: #2c3824; --primary-light: #8a9a63;
-            --secondary: #4a8546; --secondary-dark: #3a6238;
-            --danger: #e53935; --success: #5a9450; --warning: #bfa64a;
-            --accent-gold: #d4b86d; --accent-gold-light: #e5cfa5;
-            --accent-olive: #9bb375; --accent-olive-dark: #7a8c5a;
-            --light: #f7f9f1; --dark: #20291a; --gray: #7f9d5c; --gray-light: #eef2e3;
-            --card-bg: #ffffff; --body-bg: #f6f8f0;
-            --shadow-sm: 0 2px 10px rgba(60,69,47,0.07);
-            --shadow-md: 0 8px 24px rgba(60,69,47,0.10);
-            --shadow-lg: 0 16px 40px rgba(60,69,47,0.14);
-            --shadow-gold: 0 8px 28px rgba(212,184,109,0.40);
-            --shadow-olive: 0 8px 28px rgba(155,179,117,0.35);
-            --radius-sm: 14px; --radius-md: 22px; --radius-lg: 32px;
-            --transition: all 0.05s cubic-bezier(0.2,0.8,0.2,1);
-            --header-gradient: linear-gradient(135deg, #3c452f 0%, #566d3d 100%);
+            /* Light mode — زيتوني متناسق */
+            --primary: #3c452f;
+            --primary-dark: #2c3824;
+            --primary-light: #6c8a49;
+            --secondary: #4f8a4a;
+            --secondary-dark: #3a6238;
+            --danger: #d54855;
+            --success: #4f8a4a;
+            --warning: #b87912;
+            --accent-gold: #c9b46a;
+            --accent-gold-light: #e5cfa5;
+            --accent-olive: #9bb375;
+            --accent-olive-dark: #7a8c5a;
+            --light: #f7f9f1;
+            --dark: #20291a;
+            --gray: #6d7a5c;
+            --gray-light: #e8ecd8;
+            --card-bg: #ffffff;
+            --body-bg: #f6f8f0;
+            --border: rgba(60,69,47,0.08);
+            --shadow-sm: 0 2px 10px rgba(60,69,47,0.06);
+            --shadow-md: 0 8px 22px rgba(60,69,47,0.09);
+            --shadow-lg: 0 14px 36px rgba(60,69,47,0.12);
+            --shadow-gold: 0 6px 20px rgba(201,180,106,0.28);
+            --shadow-olive: 0 6px 20px rgba(108,138,73,0.22);
+            --radius-sm: 14px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
+            --header-gradient: linear-gradient(135deg, #3c452f 0%, #4f6338 55%, #566d3d 100%);
         }
         /* ===== DARK MODE ===== */
         body.dark-mode {
-            --card-bg: #20291a; --body-bg: #20291a; --dark: #f5f7ef; --light: #20291a;
-            --gray-light: #35422a; --gray: #a7c087;
-            background: radial-gradient(ellipse at top, #20291a 0%, #20291a 70%) !important;
-            color: #f5f7ef;
+            --primary: #8a9a63;
+            --primary-dark: #6c8a49;
+            --primary-light: #a7c087;
+            --secondary: #5a9450;
+            --secondary-dark: #4a8546;
+            --danger: #e57373;
+            --success: #81c784;
+            --warning: #d4b86d;
+            --accent-gold: #d4b86d;
+            --accent-gold-light: #e5cfa5;
+            --accent-olive: #a7c087;
+            --accent-olive-dark: #8a9a63;
+            --light: #2a3222;
+            --dark: #f0f3e8;
+            --gray: #a3b08e;
+            --gray-light: #35422a;
+            --card-bg: #252e1f;
+            --body-bg: #1a2116;
+            --border: rgba(255,255,255,0.08);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.25);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.32);
+            --shadow-lg: 0 16px 40px rgba(0,0,0,0.4);
+            --header-gradient: linear-gradient(135deg, #2c3824 0%, #3c452f 50%, #4a5638 100%);
+            background: #1a2116 !important;
+            color: var(--dark);
         }
-        body.dark-mode .card { border-color: rgba(255,255,255,0.06); background: rgba(32,41,26,0.95); backdrop-filter: blur(12px); }
-        body.dark-mode .bottom-nav { background:transparent; }
-        body.dark-mode .nav-item { background:var(--card-bg); box-shadow:0 4px 16px rgba(0,0,0,0.35); }
-        body.dark-mode .option { background:#20291a; border-color:#35422a; color:#f5f7ef; }
-        body.dark-mode .option:hover { border-color:var(--primary-light); background:#2a3820; }
-        body.dark-mode .quiz-container,.dark-mode .stats-container,.dark-mode .encyclopedia-container { background:#20291a; }
-        body.dark-mode .setting-row { background:#2a3820; border-color:#35422a; }
-        body.dark-mode .stat-card { background:linear-gradient(145deg,#2a3820,#20291a); border-color:#35422a; }
-        body.dark-mode .level-card { background:#20291a; }
-        body.dark-mode .encyclopedia-item { background:#2a3820; border-color:#35422a; }
-        body.dark-mode .favorites-list { background:#2a3820; }
-        body.dark-mode .favorite-entry:hover { background:rgba(138,154,99,0.15); }
-        body.dark-mode .question { background:linear-gradient(135deg,rgba(138,154,99,0.12),rgba(138,154,99,0.05)); border-right-color:var(--primary-light); }
-        body.dark-mode .result-stat-card { background:#2a3820; border-color:#35422a; }
-        body.dark-mode .review-item { background:#2a3820; border-color:#35422a; }
+        body.dark-mode .card {
+            border-color: var(--border);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-md);
+        }
+        body.dark-mode .bottom-nav { background: transparent; }
+        body.dark-mode .nav-item {
+            background: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            color: var(--gray);
+        }
+        body.dark-mode .nav-item.active {
+            color: #fff;
+            background: linear-gradient(135deg, #4a5638, #6c8a49);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+        }
+        body.dark-mode .option {
+            background: var(--card-bg);
+            border-color: var(--gray-light);
+            color: var(--dark);
+        }
+        body.dark-mode .option:hover {
+            border-color: var(--primary-light);
+            background: #2a3222;
+        }
+        body.dark-mode .option.selected {
+            border-color: var(--primary-light);
+            background: rgba(138,154,99,0.15);
+        }
+        body.dark-mode .quiz-container,
+        body.dark-mode .stats-container,
+        body.dark-mode .encyclopedia-container {
+            background: var(--card-bg);
+        }
+        body.dark-mode .setting-row {
+            background: #2a3222;
+            border-color: var(--border);
+        }
+        body.dark-mode .stat-card {
+            background: linear-gradient(145deg, #2a3222, #252e1f);
+            border-color: var(--border);
+        }
+        body.dark-mode .level-card { background: var(--card-bg); }
+        body.dark-mode .encyclopedia-item {
+            background: #2a3222;
+            border-color: var(--border);
+        }
+        body.dark-mode .favorites-list { background: #2a3222; }
+        body.dark-mode .favorite-entry:hover { background: rgba(138,154,99,0.12); }
+        body.dark-mode .question {
+            background: linear-gradient(135deg, rgba(138,154,99,0.12), rgba(138,154,99,0.04));
+            border-right-color: var(--primary-light);
+            color: var(--dark);
+        }
+        body.dark-mode .result-stat-card { background: #2a3222; border-color: var(--border); }
+        body.dark-mode .review-item { background: #2a3222; border-color: var(--border); }
+        body.dark-mode .header {
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+        }
+        body.dark-mode .btn {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .progress-bar,
+        body.dark-mode .quiz-progress-track {
+            background: #35422a;
+        }
 
         body {
-            background: linear-gradient(145deg, #f6f8f0 0%, #f2f5ea 50%, #eef2e3 100%);
+            background: var(--body-bg);
             color:var(--dark); line-height:1.7; overflow-x:hidden;
             padding-bottom:90px; min-height:100vh;
-            transition: background 0.2s, color 0.15s;
+            transition: background 0.18s ease, color 0.18s ease;
         }
         body::before {
             content:''; position:fixed; top:0; left:0; right:0; bottom:0;
@@ -199,16 +287,80 @@
         .lang-flag { font-size: 16px; line-height: 1; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15)); }
         .lang-code { font-size: 9px; opacity: 0.95; letter-spacing: 0.6px; font-weight: 800; }
 
+        /* ===== LANGUAGE SEGMENTED CONTROL (profile screen) ===== */
+        .lang-segmented {
+            position: relative;
+            display: flex;
+            background: var(--gray-light);
+            border-radius: 16px;
+            padding: 4px;
+        }
+        .lang-segmented-thumb {
+            position: absolute;
+            top: 4px; bottom: 4px; left: 4px;
+            width: calc(50% - 4px);
+            background: var(--primary);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: left 0.25s cubic-bezier(.4,0,.2,1), width 0.25s ease;
+            z-index: 0;
+        }
+        .lang-seg-btn {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 8px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .lang-seg-btn.is-active { color: #fff; }
+
         /* ===== HEADER ===== */
         .header {
             background: var(--header-gradient);
-            color:white;padding:16px 0;position:sticky;top:0;z-index:1000;
-            box-shadow:0 6px 32px rgba(60,69,47,0.35);
-            border-radius:28px 28px 28px 28px;
-            margin:12px 16px 0;
-            backdrop-filter:blur(8px);
-            -webkit-backdrop-filter:blur(8px);
-            border:1.5px solid rgba(255,255,255,0.15);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(60,69,47,0.28);
+            border-radius: 28px;
+            margin: 12px 16px 0;
+            /* بدون blur — يمنع الضبابية */
+            border: 1.5px solid rgba(255,255,255,0.18);
+            overflow: hidden;
+            transition: box-shadow 0.18s ease, margin 0.18s ease, border-radius 0.18s ease;
+        }
+        .header.header-scrolled {
+            box-shadow: 0 10px 28px rgba(60,69,47,0.36);
+            margin: 8px 12px 0;
+            border-radius: 22px;
+        }
+        /* لمعة خفيفة جدًا بدون طبقة ضباب */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -30%;
+            width: 40%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+            animation: headerSheen 9s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes headerSheen {
+            0% { transform: translateX(0); opacity: 0; }
+            15% { opacity: 0.7; }
+            50% { transform: translateX(280%); opacity: 0.5; }
+            100% { transform: translateX(280%); opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .header::before { animation: none; display: none; }
+            .header { transition: none; }
         }
         .header-content { 
             max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;
@@ -291,15 +443,16 @@
             background:var(--card-bg);border-radius:var(--radius-md);
             padding:26px 22px;margin-bottom:20px;
             box-shadow:var(--shadow-md);transition:var(--transition);
-            border:1px solid rgba(60,69,47,0.06);
+            border:1px solid var(--border);
             position:relative;overflow:visible;
+            min-height: auto;
         }
         .card::before {
             content:'';position:absolute;top:0;right:0;width:80px;height:80px;
             border-radius:0 var(--radius-md) 0 100%;
             background:linear-gradient(135deg,rgba(60,69,47,0.03),transparent);
         }
-        .card:hover { transform:translateY(-3px);box-shadow:var(--shadow-lg); }
+        .card:hover { transform:translateY(-2px);box-shadow:var(--shadow-lg); }
         .card-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:16px; }
         .card-title { font-size:21px;font-weight:800;color:var(--dark);line-height:1.3; }
         .card-icon { width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;box-shadow:0 4px 12px rgba(0,0,0,0.15); }
@@ -557,55 +710,242 @@
         .about-overlay { overscroll-behavior:contain; }
         @media (max-width:640px) { .level-card { min-height:140px; padding:10px 6px; } .level-card .level-title { font-size:12px; } .level-card .level-desc { font-size:10px; } .level-action { font-size:10px; } }
 
-        /* ===== QUIZ ===== */
+        /* ===== QUIZ (تصميم احترافي) ===== */
         .quiz-container {
-            background:var(--card-bg);border-radius:var(--radius-md);
-            padding:24px 20px;box-shadow:var(--shadow-md);margin-bottom:20px;
+            background: linear-gradient(180deg, #fffcf7 0%, #faf6ee 100%);
+            border-radius: 24px;
+            padding: 20px 18px 24px;
+            box-shadow: 0 10px 32px rgba(60,69,47,0.10);
+            margin-bottom: 20px;
+            border: 1px solid rgba(201,180,106,0.22);
+            position: relative;
+            overflow: hidden;
         }
-        .quiz-header { display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--gray-light); }
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 12%; right: 12%;
+            height: 3px;
+            border-radius: 0 0 8px 8px;
+            background: linear-gradient(90deg, transparent, #e5cfa5 20%, #c9b46a 50%, #e5cfa5 80%, transparent);
+        }
+        .quiz-progress-track {
+            height: 5px;
+            background: rgba(60,69,47,0.08);
+            border-radius: 99px;
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e5cfa5, #c9b46a, #a68a2a);
+            border-radius: 99px;
+            transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .quiz-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .difficulty-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            background: #f3f0e6;
+            color: #4a5638;
+            border: 1px solid rgba(60,69,47,0.10);
+            box-shadow: 0 2px 8px rgba(60,69,47,0.04);
+        }
+        .difficulty-badge.medium {
+            background: #faf4e4;
+            color: #a68a2a;
+            border-color: rgba(201,180,106,0.35);
+        }
+        .difficulty-badge.hard {
+            background: #fdecea;
+            color: #c62828;
+            border-color: rgba(229,57,53,0.18);
+        }
+        .difficulty-badge.expert {
+            background: #f3eef8;
+            color: #6a4c93;
+            border-color: rgba(106,76,147,0.2);
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(60,69,47,0.08);
+            flex-wrap: wrap;
+        }
         .quiz-progress {
-            font-size:14px;font-weight:700;color:var(--primary);
-            background:rgba(60,69,47,0.08);padding:7px 16px;border-radius:40px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #5c4a1e;
+            background: linear-gradient(135deg, #f5e6a6, #e8d48a);
+            padding: 9px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(166,138,42,0.25);
+            box-shadow: 0 3px 10px rgba(201,180,106,0.25);
+            white-space: nowrap;
         }
         .quiz-timer {
-            display:flex;align-items:center;gap:7px;
-            background:rgba(229,57,53,0.09);padding:7px 16px;border-radius:40px;
-            color:var(--danger);font-weight:800;font-size:17px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, #fde8e8, #fce4ec);
+            padding: 9px 16px;
+            border-radius: 40px;
+            color: #c62828;
+            font-weight: 800;
+            font-size: 16px;
+            border: 1px solid rgba(229,57,53,0.15);
+            box-shadow: 0 3px 10px rgba(229,57,53,0.12);
+            white-space: nowrap;
         }
-        .quiz-timer.warning { animation: glow 0.9s infinite; background:rgba(229,57,53,0.18); }
+        .quiz-timer.warning {
+            animation: glow 0.9s infinite;
+            background: linear-gradient(135deg, #ffcdd2, #ef9a9a);
+        }
         .question {
-            font-size:19px;font-weight:700;margin-bottom:22px;line-height:1.7;
-            padding:16px 18px;
-            background:linear-gradient(135deg,rgba(60,69,47,0.06),rgba(60,69,47,0.02));
-            border-radius:16px;border-right:4px solid var(--primary);
-            color:var(--dark);
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.75;
+            padding: 18px 18px;
+            background: linear-gradient(145deg, #faf7f0, #f5f1e6);
+            border-radius: 18px;
+            border: 1.5px solid rgba(201,180,106,0.35);
+            border-inline-start: 4px solid #c9b46a;
+            color: var(--dark);
+            box-shadow: 0 4px 14px rgba(60,69,47,0.05);
         }
-        .options { display:flex;flex-direction:column;gap:11px;margin-bottom:22px; }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
         .option {
-            padding:15px 18px;border:2px solid var(--gray-light);border-radius:16px;
-            cursor:pointer;transition: border-color 0.05s ease, background 0.05s ease, box-shadow 0.05s ease, transform 0.05s ease;
-            display:flex;align-items:center;gap:14px;
-            background:var(--card-bg);position:relative;overflow:hidden;
+            padding: 14px 16px;
+            border: 1.5px solid rgba(201,180,106,0.40);
+            border-radius: 18px;
+            cursor: pointer;
+            transition: border-color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fffefb;
+            position: relative;
+            overflow: hidden;
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
-            min-height: 56px;
-            will-change: transform, border-color;
+            min-height: 58px;
+            box-shadow: 0 3px 12px rgba(60,69,47,0.05);
         }
-        .option:hover { border-color:var(--primary-light);transform:translateX(5px);box-shadow:var(--shadow-sm); }
-        .option.selected { border-color:var(--primary);background:linear-gradient(135deg,rgba(60,69,47,0.08),rgba(60,69,47,0.03)); }
-        .option.correct { border-color:var(--success);background:linear-gradient(135deg,rgba(90,148,80,0.12),rgba(90,148,80,0.04)); }
-        .option.incorrect { border-color:var(--danger);background:linear-gradient(135deg,rgba(229,57,53,0.10),rgba(229,57,53,0.03));animation:shake 0.18s ease; }
+        .option:hover {
+            border-color: #c9b46a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(201,180,106,0.18);
+        }
+        .option.selected {
+            border-color: #a68a2a;
+            background: linear-gradient(135deg, rgba(245,230,166,0.35), rgba(255,252,245,0.95));
+            box-shadow: 0 0 0 3px rgba(201,180,106,0.18), 0 6px 16px rgba(201,180,106,0.15);
+        }
+        .option.correct {
+            border-color: var(--success);
+            background: linear-gradient(135deg, rgba(79,138,74,0.12), rgba(79,138,74,0.03));
+        }
+        .option.incorrect {
+            border-color: var(--danger);
+            background: linear-gradient(135deg, rgba(213,72,85,0.10), rgba(213,72,85,0.03));
+            animation: shake 0.18s ease;
+        }
         .option-marker {
-            width:34px;height:34px;border-radius:50%;border:2px solid var(--gray-light);
-            display:flex;align-items:center;justify-content:center;
-            font-weight:800;font-size:13px;flex-shrink:0;transition:var(--transition);z-index:1;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 14px;
+            flex-shrink: 0;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+            z-index: 1;
+            color: #3c2f0e;
+            background: linear-gradient(145deg, #f5e6a6, #e0c45c 50%, #c9b46a);
+            box-shadow: 0 3px 10px rgba(166,138,42,0.35), inset 0 1px 0 rgba(255,255,255,0.5);
         }
-        .option.selected .option-marker { border-color:var(--primary);background:var(--primary);color:white; }
-        .option.correct .option-marker { border-color:var(--success);background:var(--success);color:white; }
-        .option.incorrect .option-marker { border-color:var(--danger);background:var(--danger);color:white; }
-        .option-text { z-index:1;flex:1;font-size:15px;line-height:1.5; }
+        .option-text {
+            z-index: 1;
+            flex: 1;
+            font-size: 14.5px;
+            line-height: 1.55;
+            color: var(--dark);
+        }
+        .option.selected .option-marker {
+            background: linear-gradient(145deg, #3c452f, #566d3d);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(60,69,47,0.35);
+            transform: scale(1.05);
+        }
+        .option.correct .option-marker {
+            background: linear-gradient(145deg, #4f8a4a, #3a6238);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(79,138,74,0.35);
+        }
+        .option.incorrect .option-marker {
+            background: linear-gradient(145deg, #e57373, #c62828);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(198,40,40,0.3);
+        }
+        body.dark-mode .quiz-container {
+            background: linear-gradient(180deg, #252e1f, #1f281a);
+            border-color: rgba(201,180,106,0.18);
+        }
+        body.dark-mode .question {
+            background: linear-gradient(145deg, #2a3222, #252e1f);
+            border-color: rgba(201,180,106,0.28);
+            color: #eef2e3;
+        }
+        body.dark-mode .option {
+            background: #2a3222;
+            border-color: rgba(201,180,106,0.28);
+            color: #eef2e3;
+        }
+        body.dark-mode .option-text { color: #eef2e3; }
+        body.dark-mode .option.selected {
+            background: rgba(201,180,106,0.12);
+            border-color: #c9b46a;
+        }
+        body.dark-mode .difficulty-badge {
+            background: #2a3222;
+            color: #d4b86d;
+            border-color: rgba(201,180,106,0.25);
+        }
+        body.dark-mode .quiz-progress {
+            background: linear-gradient(135deg, #4a4220, #6b5c28);
+            color: #f5e6a6;
+            border-color: rgba(201,180,106,0.3);
+        }
+        body.dark-mode .quiz-timer {
+            background: linear-gradient(135deg, #4a2020, #5c2828);
+            color: #ffcdd2;
+        }
 
         /* ===== EXPLANATION BOX ===== */
         .explanation-box {
@@ -677,10 +1017,62 @@
         .setting-row:hover { border-color:var(--primary);box-shadow:var(--shadow-sm); }
         .setting-icon { width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0; }
         .setting-label { flex:1;font-weight:600;font-size:14px; }
-        .setting-slider-wrap { display:flex;align-items:center;gap:10px; }
-        .setting-slider { -webkit-appearance:none;width:100px;height:6px;border-radius:6px;background:var(--gray-light);outline:none;cursor:pointer; }
-        .setting-slider::-webkit-slider-thumb { -webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 6px rgba(108,138,73,0.4); }
-        .setting-val { min-width:32px;font-weight:800;font-size:15px;color:var(--primary);text-align:center; }
+        .setting-slider-wrap {
+            display:flex; align-items:center; gap:12px;
+            flex: 1; min-width: 0;
+            direction: ltr; /* المسار من اليسار لليمين أوضح للسحب */
+        }
+        .setting-slider {
+            -webkit-appearance: none; appearance: none;
+            flex: 1; width: 100%; min-width: 120px; max-width: 100%;
+            height: 28px; /* منطقة لمس أوسع */
+            margin: 0; padding: 0;
+            background: transparent;
+            outline: none; cursor: pointer;
+            touch-action: pan-x;
+        }
+        .setting-slider::-webkit-slider-runnable-track {
+            height: 8px; border-radius: 99px;
+            background: linear-gradient(90deg, #e8ecd8, #d4c48a);
+            border: 1px solid rgba(201,180,106,0.35);
+        }
+        .setting-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 26px; height: 26px; margin-top: -10px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #e5cfa5, #c9b46a 45%, #a68a2a);
+            border: 2px solid #fff;
+            box-shadow: 0 3px 10px rgba(166,138,42,0.45);
+            cursor: grab;
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        .setting-slider::-webkit-slider-thumb:active {
+            cursor: grabbing;
+            transform: scale(1.12);
+            box-shadow: 0 4px 14px rgba(166,138,42,0.55);
+        }
+        .setting-slider::-moz-range-track {
+            height: 8px; border-radius: 99px;
+            background: linear-gradient(90deg, #e8ecd8, #d4c48a);
+            border: 1px solid rgba(201,180,106,0.35);
+        }
+        .setting-slider::-moz-range-thumb {
+            width: 26px; height: 26px; border: 2px solid #fff; border-radius: 50%;
+            background: linear-gradient(145deg, #e5cfa5, #c9b46a 45%, #a68a2a);
+            box-shadow: 0 3px 10px rgba(166,138,42,0.45);
+            cursor: grab;
+        }
+        .setting-val {
+            min-width: 36px; font-weight: 900; font-size: 16px;
+            color: #a68a2a; text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+        body.dark-mode .setting-slider::-webkit-slider-runnable-track,
+        body.dark-mode .setting-slider::-moz-range-track {
+            background: linear-gradient(90deg, #35422a, #6b5c28);
+            border-color: rgba(212,184,109,0.35);
+        }
+        body.dark-mode .setting-val { color: #d4b86d; }
 
         /* ===== PROFILE AVATAR ===== */
         .profile-avatar-wrap { position:relative;width:100px;height:100px;margin:0 auto 15px; }
@@ -692,7 +1084,7 @@
 
         /* ===== BOTTOM NAV ===== */
         .bottom-nav { position:fixed;bottom:0;left:0;right:0;background:transparent;display:flex;justify-content:space-around;padding:10px 14px 22px;z-index:1000; }
-        .nav-item { display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--gray);text-decoration:none;font-size:11px;font-weight:600;transition:transform 0.05s ease, background 0.05s ease, color 0.05s ease, box-shadow 0.05s ease;cursor:pointer;padding:8px 22px;border-radius:44px;background:var(--card-bg);box-shadow:0 4px 16px rgba(60,69,47,0.12); }
+        .nav-item { display:flex;flex-direction:column;align-items:center;gap:5px;color:var(--gray);text-decoration:none;font-size:11px;font-weight:600;transition:transform 0.05s ease, background 0.05s ease, color 0.05s ease, box-shadow 0.05s ease;cursor:pointer;padding:8px 22px;border-radius:44px;background:var(--card-bg);box-shadow:0 4px 16px rgba(60,69,47,0.12); touch-action:manipulation; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
         .nav-item i { font-size:26px; }
         .nav-item.active { color:white;background:linear-gradient(135deg,var(--primary),var(--primary-light));box-shadow:0 6px 20px rgba(60,69,47,0.35); }
         .nav-item:hover:not(.active) { color:var(--primary);transform:translateY(-4px); }
@@ -706,10 +1098,17 @@
         .setting-row:hover { border-color:var(--primary-light);box-shadow:var(--shadow-sm); }
         .setting-icon { width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0; }
         .setting-label { flex:1;font-weight:700;font-size:14px; }
-        .setting-slider-wrap { display:flex;align-items:center;gap:9px; }
-        .setting-slider { -webkit-appearance:none;width:90px;height:5px;border-radius:6px;background:var(--gray-light);outline:none;cursor:pointer; }
-        .setting-slider::-webkit-slider-thumb { -webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 8px rgba(60,69,47,0.35); }
-        .setting-val { min-width:30px;font-weight:900;font-size:15px;color:var(--primary);text-align:center; }
+        /* setting-slider styles unified above */
+
+        /* إعدادات بدون رموز زائدة */
+        .setting-row .setting-icon { display: none !important; }
+        .setting-row .setting-label {
+            flex: 0 1 auto;
+            min-width: 88px;
+            margin-inline-end: 4px;
+        }
+
+
 
         /* ===== PROFILE AVATAR ===== */
         .profile-avatar-wrap { position:relative;width:110px;height:110px;margin:0 auto 15px; }
@@ -718,6 +1117,8 @@
 
         /* ===== WELCOME AVATAR ===== */
         .welcome-user-avatar { width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent-gold),#bfa64a);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:#20291a;border:3px solid rgba(60,69,47,0.15);box-shadow:0 4px 16px rgba(191,166,74,0.30);flex-shrink:0; }
+
+
 
         /* ===== RESULTS SCREEN ===== */
         .results-hero { 
@@ -849,14 +1250,17 @@
         .screen { display:none; }
         .screen.active {
             display:block;
-            animation:slideScreenIn 0.05s cubic-bezier(0.22,0.8,0.25,1);
-            will-change: opacity, transform;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+            contain: none;
+        }
+        #encyclopedia-container {
+            content-visibility: auto;
+            contain-intrinsic-size: auto 600px;
         }
         .hidden { display:none !important; }
         .text-center { text-align:center; }
-        .fade-in { animation:fadeInUp 0.2s ease both; }
+        .fade-in { animation:fadeInUp 0.3s ease forwards; opacity: 1; }
 
         /* ===== WELCOME BACK ===== */
         .welcome-back-screen { position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(32,41,26,0.75);backdrop-filter:blur(18px);display:flex;justify-content:center;align-items:center;z-index:9998; }
@@ -1329,6 +1733,14 @@
     .encyclopedia-modal-overlay .encyclopedia-rich-content { overflow-wrap:anywhere; color: #2a3820; }
     .encyclopedia-modal-overlay .encyclopedia-rich-content table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; background:#fff; border-radius:12px; overflow:hidden; box-shadow: 0 4px 14px rgba(60,69,47,0.08); }
     .encyclopedia-modal-overlay .encyclopedia-rich-content th, .encyclopedia-modal-overlay .encyclopedia-rich-content td { border:1px solid #e4ecd6; padding:10px 11px; text-align:inherit; vertical-align:top; }
+    .encyclopedia-modal-overlay .encyclopedia-rich-content td {
+        color: #2a3820 !important;
+        background: #fff;
+    }
+    .encyclopedia-modal-overlay .encyclopedia-rich-content tr:nth-child(even) td {
+        background: #f7f9f1;
+    }
+
     .encyclopedia-modal-overlay .encyclopedia-rich-content th {
         background: linear-gradient(135deg, #3c452f, #566d3d) !important;
         color: #f7f9f1 !important;
@@ -1372,12 +1784,62 @@
         font-weight: 900;
     }
     .encyclopedia-modal-overlay .encyclopedia-rich-content a { color: #5a7440; font-weight: 700; }
+
+    /* موسوعة — وضوح الوضع الليلي (جداول ونص) */
     body.dark-mode .encyclopedia-modal-overlay .encyclopedia-modal-panel {
-        background: linear-gradient(165deg, #242e1c, #20291a) !important;
-        border-color: #35422a;
-        color: #f5f7ef;
+        background: linear-gradient(165deg, #252e1f 0%, #1f281a 100%) !important;
+        border-color: rgba(255,255,255,0.1) !important;
+        color: #f0f3e8 !important;
     }
-    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content { color: #eef3e4; }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content {
+        color: #eef2e3 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content p,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content li,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content span,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content div {
+        color: #eef2e3 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h1,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h2,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h3,
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h4 {
+        color: #f5e6a6 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content table {
+        background: #2a3222 !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25) !important;
+        color: #eef2e3 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content th {
+        background: linear-gradient(135deg, #3c452f, #566d3d) !important;
+        color: #f7f9f1 !important;
+        border-color: #4a5638 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content td {
+        background: #2a3222 !important;
+        color: #eef2e3 !important;
+        border-color: #3d4a32 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content tr:nth-child(even) td {
+        background: #303a28 !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content a {
+        color: #d4b86d !important;
+    }
+    body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content blockquote {
+        background: #2a3222 !important;
+        color: #eef2e3 !important;
+        border-inline-start-color: #c9b46a !important;
+    }
+    body.dark-mode .encyclopedia-item .encyclopedia-content,
+    body.dark-mode .encyclopedia-item .encyclopedia-title {
+        color: #eef2e3 !important;
+    }
+    body.dark-mode .encyclopedia-item .encyclopedia-title {
+        color: #d4b86d !important;
+    }
+
     body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h1,
     body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h2,
     body.dark-mode .encyclopedia-modal-overlay .encyclopedia-rich-content h3,
@@ -1524,7 +1986,7 @@ body.quiz-header-collapsed #quiz-screen > .header {
     transform: scale(0.97) !important;
 }
 .screen.active {
-    animation-duration: 0.04s !important;
+    /* animation-duration removed - using animation from child elements */
 }
 .quiz-progress-fill {
     transition: width 0.18s cubic-bezier(0.4,0,0.2,1) !important;
@@ -1628,6 +2090,15 @@ body.quiz-header-collapsed #quiz-screen > .header {
 /* Prevent parent cards from clipping dropdowns */
 .setting-row, .card, .encyclopedia-container, #profile-screen .container {
     overflow: visible !important;
+}
+/* Profile screen header fix - avoid covering cards */
+#profile-screen .header {
+    position: relative !important;
+    z-index: 50 !important;
+    top: auto !important;
+}
+#profile-screen > .container > .card:first-child {
+    margin-top: 20px;
 }
 @keyframes wcpSelectIn {
     from { opacity: 0; transform: translateY(-6px) scale(0.98); }
@@ -2186,7 +2657,7 @@ body.dark-mode .wcp-select-option.is-selected {
         <div class="header">
             <div class="header-content">
                 <button class="btn-back" onclick="showScreen('welcome-screen')"><i class="fas fa-arrow-right"></i></button>
-                <h1 id="enc-header">📖 موسوعة الحفر النفطي</h1>
+                <h1 id="enc-header">📖 موسوعة الحفر</h1>
                 <button onclick="toggleEncFavorites()" id="enc-fav-btn" style="background:rgba(255,255,255,0.2);border:none;color:white;width:42px;height:42px;border-radius:50%;font-size:18px;cursor:pointer;">⭐</button>
             </div>
         </div>
@@ -2253,7 +2724,7 @@ body.dark-mode .wcp-select-option.is-selected {
                 <div style="width:45px;"></div>
             </div>
         </div>
-        <div class="container" style="padding-bottom:30px;">
+        <div class="container" style="padding-bottom:120px;">
 
             <!-- بطاقة المستخدم -->
             <div class="card fade-in" style="text-align:center;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;padding:28px;">
@@ -2288,7 +2759,6 @@ body.dark-mode .wcp-select-option.is-selected {
                 <h3 style="margin-bottom:18px;display:flex;align-items:center;gap:8px;"><i class="fas fa-sliders-h" style="color:var(--primary);"></i> <span id="settings-title">إعدادات الاختبارات</span></h3>
                 <div style="display:grid;gap:10px;">
                     <div class="setting-row">
-                        <div class="setting-icon" style="background:#f2f5ea;"><span>📘</span></div>
                         <div class="setting-label" id="basic-q-label">أساسي</div>
                         <div class="setting-slider-wrap">
                             <input type="range" id="questions-basic" class="setting-slider" min="5" max="60" value="45" oninput="document.getElementById('val-basic').textContent=this.value" onchange="saveSettings()">
@@ -2296,7 +2766,6 @@ body.dark-mode .wcp-select-option.is-selected {
                         </div>
                     </div>
                     <div class="setting-row">
-                        <div class="setting-icon" style="background:#f2f6ea;"><span>📗</span></div>
                         <div class="setting-label" id="inter-q-label">متوسط</div>
                         <div class="setting-slider-wrap">
                             <input type="range" id="questions-intermediate" class="setting-slider" min="10" max="60" value="45" oninput="document.getElementById('val-inter').textContent=this.value" onchange="saveSettings()">
@@ -2304,7 +2773,6 @@ body.dark-mode .wcp-select-option.is-selected {
                         </div>
                     </div>
                     <div class="setting-row">
-                        <div class="setting-icon" style="background:#f7f4e6;"><span>📙</span></div>
                         <div class="setting-label" id="adv-q-label">متقدم</div>
                         <div class="setting-slider-wrap">
                             <input type="range" id="questions-advanced" class="setting-slider" min="15" max="60" value="45" oninput="document.getElementById('val-adv').textContent=this.value" onchange="saveSettings()">
@@ -2312,7 +2780,6 @@ body.dark-mode .wcp-select-option.is-selected {
                         </div>
                     </div>
                     <div class="setting-row">
-                        <div class="setting-icon" style="background:#f2f5ea;"><span>📕</span></div>
                         <div class="setting-label" id="pro-q-label">محترف</div>
                         <div class="setting-slider-wrap">
                             <input type="range" id="questions-professional" class="setting-slider" min="20" max="60" value="45" oninput="document.getElementById('val-pro').textContent=this.value" onchange="saveSettings()">
@@ -2320,20 +2787,17 @@ body.dark-mode .wcp-select-option.is-selected {
                         </div>
                     </div>
                     <div class="setting-row">
-                        <div class="setting-icon" style="background:#eef2e3;"><span>⏱️</span></div>
-                        <div class="setting-label" id="time-q-label">الوقت (دقيقة)</div>
+                        <div class="setting-label" id="time-q-label">وقت الاختبار (دقائق)</div>
                         <div class="setting-slider-wrap">
                             <input type="range" id="quiz-time" class="setting-slider" min="5" max="30" value="12" oninput="document.getElementById('val-time').textContent=this.value" onchange="saveSettings()">
                             <span class="setting-val" id="val-time">12</span>
                         </div>
                     </div>
                     <div class="setting-row setting-action-row" onclick="toggleDarkMode()">
-                        <div class="setting-icon" style="background:#f2f5ea;"><span id="settings-theme-icon">🌙</span></div>
                         <div class="setting-label" id="theme-setting-label">الوضع الليلي</div>
                         <button class="settings-action-btn" id="settings-theme-btn" type="button" onclick="event.stopPropagation();toggleDarkMode()">تفعيل</button>
                     </div>
                     <div class="setting-row" style="align-items:center;">
-                        <div class="setting-icon" style="background:#eef2e3;"><span>🗂️</span></div>
                         <div class="setting-label" id="question-source-label">مصدر الأسئلة</div>
                         <div class="wcp-select" id="question-source-select" data-value="new">
                             <button type="button" class="wcp-select-trigger" id="question-source-trigger" aria-haspopup="listbox" aria-expanded="false">
@@ -2353,10 +2817,11 @@ body.dark-mode .wcp-select-option.is-selected {
 
             <!-- اللغة -->
             <div class="card fade-in">
-                <h3 style="margin-bottom:18px;display:flex;align-items:center;gap:8px;"><i class="fas fa-language" style="color:var(--primary);"></i> اللغة / Language</h3>
-                <div style="display:flex;gap:12px;">
-                    <button onclick="setLang('ar')" id="lang-btn-ar" style="flex:1;padding:14px;border-radius:16px;border:2px solid var(--primary);background:var(--primary);color:white;font-size:16px;font-weight:700;cursor:pointer;">🇴🇲 العربية</button>
-                    <button onclick="setLang('en')" id="lang-btn-en" style="flex:1;padding:14px;border-radius:16px;border:2px solid var(--gray-light);background:white;font-size:16px;font-weight:700;cursor:pointer;">🇬🇧 English</button>
+                <h3 style="margin-bottom:16px;display:flex;align-items:center;gap:8px;"><i class="fas fa-language" style="color:var(--primary);"></i> اللغة / Language</h3>
+                <div class="lang-segmented" id="lang-segmented">
+                    <div class="lang-segmented-thumb" id="lang-segmented-thumb"></div>
+                    <button type="button" onclick="setLang('ar')" id="lang-btn-ar" class="lang-seg-btn is-active" role="tab" aria-selected="true">🇴🇲 العربية</button>
+                    <button type="button" onclick="setLang('en')" id="lang-btn-en" class="lang-seg-btn" role="tab" aria-selected="false">🇬🇧 English</button>
                 </div>
             </div>
 
@@ -2410,12 +2875,11 @@ body.dark-mode .wcp-select-option.is-selected {
     </div>
 
     <!-- BOTTOM NAVIGATION -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="showScreen('welcome-screen')"><i class="fas fa-home"></i><span id="nav-home">الرئيسية</span></div>
-        
-        <div class="nav-item" onclick="showScreen('encyclopedia-screen')"><i class="fas fa-book"></i><span id="nav-enc">الموسوعة</span></div>
-        <div class="nav-item" onclick="showScreen('statistics-screen')"><i class="fas fa-chart-bar"></i><span id="nav-stats">الإحصائيات</span></div>
-        <div class="nav-item" onclick="showScreen('profile-screen')"><i class="fas fa-user"></i><span id="nav-profile">حسابي</span></div>
+    <div class="bottom-nav" id="bottom-nav">
+        <div class="nav-item active" data-screen="welcome-screen" role="button" tabindex="0"><i class="fas fa-home"></i><span id="nav-home">الرئيسية</span></div>
+        <div class="nav-item" data-screen="encyclopedia-screen" role="button" tabindex="0"><i class="fas fa-book"></i><span id="nav-enc">الموسوعة</span></div>
+        <div class="nav-item" data-screen="statistics-screen" role="button" tabindex="0"><i class="fas fa-chart-bar"></i><span id="nav-stats">الإحصائيات</span></div>
+        <div class="nav-item" data-screen="profile-screen" role="button" tabindex="0"><i class="fas fa-user"></i><span id="nav-profile">حسابي</span></div>
     </div>
 
 <script>
@@ -2423,7 +2887,7 @@ body.dark-mode .wcp-select-option.is-selected {
 //  CLOUD CONFIGURATION (Cloudflare Worker)
 // ===================================================
 const CLOUD_CONFIG = {
-    API_URL: "https://well-control-pro.well-control-pro.workers.dev"
+    API_URL: "https://wellcontrolpro.well-control-pro.workers.dev"
 };
 
 // ===================================================
@@ -2496,7 +2960,7 @@ const translations = {
         'level-adv-desc': 'استراتيجيات العمل والتحديات',
         'level-pro-title': 'المستوى المحترف',
         'level-pro-desc': 'الإدارة وأحدث التقنيات',
-        'enc-header': '📖 موسوعة الحفر النفطي',
+        'enc-header': '📖 موسوعة الحفر',
         'stats-header': '📊 إحصائياتي',
         'stats-title': '📈 إحصائيات تعلمك',
         'stat-quizzes-label': 'الاختبارات المكتملة',
@@ -2513,13 +2977,13 @@ const translations = {
         'name-label': '👤 الاسم:',
         'email-label': '📧 البريد الإلكتروني:',
         'favorites-title': '⭐ المفضلات',
-        'settings-title': '⚙️ إعدادات الاختبارات',
+        'settings-title': '⚙ إعدادات الاختبارات',
         'basic-q-label': '📘 أساسي:',
         'inter-q-label': '📙 متوسط:',
         'adv-q-label': '📕 متقدم:',
         'pro-q-label': '📗 محترف:',
         'time-q-label': '⏱️ وقت الاختبار (دقائق):',
-        'question-source-label': '🗂️ مصدر الأسئلة:',
+        'question-source-label': '📋 مصدر الأسئلة:',
         'question-source-new': 'الجديدة فقط',
         'question-source-legacy': 'القديمة فقط',
         'question-source-mixed': 'الجديدة والقديمة',
@@ -2529,9 +2993,9 @@ const translations = {
         'theme-setting-label': '🌙 الوضع الليلي',
         'theme-enable': 'تفعيل',
         'theme-disable': '☀️ إيقاف الوضع الليلي',
-        'reset-title': '⚠️ تصفير المستويات',
+        'reset-title': '↻ تصفير المستويات',
         'reset-desc': 'هذا الإجراء سيحذف جميع تقدم المستويات. لا يمكن التراجع!',
-        'reset-btn': '🗑️ تصفير الآن',
+        'reset-btn': '✕ تصفير الآن',
         'nav-home': 'الرئيسية',
         'nav-levels': 'المستويات',
         'nav-enc': 'الموسوعة',
@@ -2643,7 +3107,7 @@ const translations = {
         'adv-q-label': '📕 Advanced:',
         'pro-q-label': '📗 Professional:',
         'time-q-label': '⏱️ Quiz Time (minutes):',
-        'question-source-label': '🗂️ Question source:',
+        'question-source-label': '📋 Question source:',
         'question-source-new': 'New questions only',
         'question-source-legacy': 'Legacy questions only',
         'question-source-mixed': 'New and legacy questions',
@@ -2653,9 +3117,9 @@ const translations = {
         'theme-setting-label': '🌙 Dark mode',
         'theme-enable': 'Enable',
         'theme-disable': '☀️ Disable dark mode',
-        'reset-title': '⚠️ Reset Levels',
+        'reset-title': '↻ Reset Levels',
         'reset-desc': 'This will delete all level progress. This action cannot be undone!',
-        'reset-btn': '🗑️ Reset Now',
+        'reset-btn': '✕ Reset Now',
         'nav-home': 'Home',
         'nav-levels': 'Levels',
         'nav-enc': 'Encyclopedia',
@@ -21096,53 +21560,141 @@ function protectRemoteRecord(record) {
 async function loadFromCloud() {
     try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 8000);
-        const cacheBust = `?v=${Date.now()}`;
-        const response = await fetch(CLOUD_CONFIG.API_URL + cacheBust, { method:'GET', headers:{'Accept':'application/json'}, signal:controller.signal, cache:'no-store' });
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        
+        // 1) جلب سجل المستخدمين من D1
+        const response = await fetch(CLOUD_CONFIG.API_URL + '?v=' + Date.now(), { 
+            method: 'GET', 
+            headers: { 'Accept': 'application/json' }, 
+            signal: controller.signal, 
+            cache: 'no-store' 
+        });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const result = await response.json();
         let record = result?.record && typeof result.record === 'object' ? result.record : result;
         if (!record || !Array.isArray(record.users)) throw new Error('Invalid Worker response');
+        
+        // 2) جلب الموسوعات من GitHub مع فحص الإصدار (بمهلة أطول لأن الملف قد يكون كبيرًا)
+        const encController = new AbortController();
+        const encTimeoutId = setTimeout(() => encController.abort(), 25000);
         try {
-            const encResponse = await fetch(CLOUD_CONFIG.API_URL.replace(/\/$/,'') + '/api/encyclopedias?v=' + Date.now(), { method:'GET', headers:{'Accept':'application/json'}, signal:controller.signal, cache:'no-store' });
-            if (encResponse.ok) {
-                const encPayload = await encResponse.json();
-                const enc = encPayload?.encyclopedias || encPayload;
-                if (enc && typeof enc === 'object') record.encyclopedias = enc;
+            const versionKey = 'encyclopedias_version';
+            const dataKey = 'encyclopedias_data';
+            const localVersion = localStorage.getItem(versionKey);
+
+            // دالة مساعدة: تجلب الملف الكامل من GitHub وتحفظه محلياً
+            const fetchFreshArticles = async (versionToStore) => {
+                const encRes = await fetch(
+                    CLOUD_CONFIG.API_URL.replace(/\/$/, '') + '/api/articles-data?v=' + Date.now(),
+                    { method: 'GET', headers: { 'Accept': 'application/json' }, signal: encController.signal, cache: 'no-store' }
+                );
+                if (!encRes.ok) return false;
+                const encPayload = await encRes.json();
+                const raw = encPayload?.data || encPayload;
+                // الملف قد يكون بصيغة متداخلة قديمة { encyclopedias: { categories, articles } }
+                // أو بصيغة مسطّحة جديدة { categories, articles } — ندعم الحالتين
+                const enc = (raw && raw.encyclopedias && typeof raw.encyclopedias === 'object')
+                    ? raw.encyclopedias
+                    : raw;
+                if (!enc || typeof enc !== 'object' || !Array.isArray(enc.articles) || !enc.articles.length) return false;
+                record.encyclopedias = enc;
+                localStorage.setItem(versionKey, String(versionToStore));
+                localStorage.setItem(dataKey, JSON.stringify(enc));
+                return true;
+            };
+
+            // جلب رقم الإصدار أولاً (ملف صغير جداً)
+            const versionRes = await fetch(
+                CLOUD_CONFIG.API_URL.replace(/\/$/, '') + '/api/articles-version?v=' + Date.now(), 
+                { method: 'GET', headers: { 'Accept': 'application/json' }, signal: encController.signal, cache: 'no-store' }
+            );
+            
+            if (versionRes.ok) {
+                const versionData = await versionRes.json();
+                const remoteVersion = versionData.version;
+                
+                if (remoteVersion && String(remoteVersion) !== String(localVersion)) {
+                    // يوجد إصدار جديد - نحمّل الملف الكامل
+                    console.log('🔄 New encyclopedias version detected:', remoteVersion);
+                    await fetchFreshArticles(remoteVersion);
+                } else {
+                    // نفس الإصدار - نستخدم البيانات المحلية، ما لم تكن فارغة
+                    const cachedData = localStorage.getItem(dataKey);
+                    let usedCache = false;
+                    if (cachedData) {
+                        try {
+                            const parsed = JSON.parse(cachedData);
+                            if (Array.isArray(parsed?.articles) && parsed.articles.length) {
+                                record.encyclopedias = parsed;
+                                usedCache = true;
+                                console.log('✅ Using local cached encyclopedias (version matched)');
+                            }
+                        } catch(e) {}
+                    }
+                    if (!usedCache) {
+                        // النسخة المحلية فارغة أو غير موجودة رغم تطابق الإصدار (مثلاً بعد رفع محتوى يدويًا
+                        // على GitHub دون تحديث version.json) — نجلب الملف الكامل احتياطًا
+                        console.log('⚠️ Cached encyclopedias empty despite version match - forcing fresh fetch');
+                        await fetchFreshArticles(remoteVersion || localVersion || Date.now());
+                    }
+                }
             }
-        } catch (error) { console.warn('Dedicated encyclopedia endpoint unavailable:', error); }
+        } catch (error) { 
+            console.warn('Encyclopedia fetch from GitHub failed:', error);
+            // fallback: استخدام البيانات المحلية
+            const cachedData = localStorage.getItem('encyclopedias_data');
+            if (cachedData) {
+                try { record.encyclopedias = JSON.parse(cachedData); } catch(e) {}
+            }
+        } finally {
+            clearTimeout(encTimeoutId);
+        }
+        
         clearTimeout(timeoutId);
         record = protectRemoteRecord(record);
         applyCloudEncyclopedias(record);
         localStorage.setItem('cloud_backup', JSON.stringify(record));
         return record;
+        
     } catch (error) {
         console.warn('loadFromCloud Worker failed, using local backup:', error);
         const backup = localStorage.getItem('cloud_backup');
         if (!backup) return null;
-        try { const record = JSON.parse(backup); applyCloudEncyclopedias(record); return record; } catch (_) { return null; }
+        try { 
+            const record = JSON.parse(backup); 
+            applyCloudEncyclopedias(record); 
+            return record; 
+        } catch (_) { return null; }
     }
 }
 
 // حفظ البيانات في Cloudflare Worker مع timeout ونسخة محلية احتياطية
 async function saveToCloud(data) {
     try {
+        // نحفظ فقط المستخدمين في D1
+        const dataForD1 = { ...data };
+        delete dataForD1.encyclopedias;
+        
         const backup = localStorage.getItem('cloud_backup');
-        if (backup && hasMeaningfulCloudData(JSON.parse(backup)) && !hasMeaningfulCloudData(data)) {
+        if (backup && hasMeaningfulCloudData(JSON.parse(backup)) && !hasMeaningfulCloudData(dataForD1)) {
             throw new Error('Empty cloud write blocked to protect the existing local backup');
         }
+        
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 8000);
+        
         const response = await fetch(CLOUD_CONFIG.API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
+            body: JSON.stringify(dataForD1),
             signal: controller.signal
         });
         clearTimeout(timeoutId);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        
         localStorage.setItem('cloud_backup', JSON.stringify(data));
         return await response.json();
+        
     } catch (error) {
         console.warn('saveToCloud Worker failed, preserving local data:', error);
         try {
@@ -21765,30 +22317,74 @@ let pendingHomeAfterPop = false; // بعد الخروج من الاختبار ن
 let ignoreNextPopState = false;
 
 function showScreen(screenId) {
-    closeLevelsModal();
-    document.body.classList.toggle('quiz-active', screenId === 'quiz-screen');
-    
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-    window.scrollTo(0, 0);
-    
-    // تحميل البيانات بشكل غير متزامن
-    if (screenId === 'encyclopedia-screen') { populateEncyclopedia(); loadFromCloud().catch(() => {}); }
-    if (screenId === 'statistics-screen') updateStats();
-    if (screenId === 'profile-screen') { loadFavorites(); loadSettings(); updateProfileDetails(); }
+    const target = document.getElementById(screenId);
+    if (!target) return;
+
+    const current = document.querySelector('.screen.active');
+    if (current && current.id === screenId && !suppressHistoryPush) {
+        updateNavActive(screenId);
+        return;
+    }
+
+    // تمييز التبويب فورًا
     updateNavActive(screenId);
+
+    // إظهار الشاشة فورًا — أقل عمل على المسار الحرج
+    if (current) current.classList.remove('active');
+    target.classList.add('active');
+    document.body.classList.toggle('quiz-active', screenId === 'quiz-screen');
+
+    if (document.getElementById('levels-overlay')) {
+        try { closeLevelsModal(); } catch (e) {}
+    }
+    if (window.scrollY > 2) {
+        try { window.scrollTo(0, 0); } catch (e) {}
+    }
 
     if (!backGuardInitialized) {
         backGuardInitialized = true;
-        initBackNavigationGuard();
+        try { initBackNavigationGuard(); } catch (e) {}
     }
 
-    if (!suppressHistoryPush) {
-        try {
-            syncHistoryForScreen(screenId);
-        } catch (e) {}
-    }
+    const doHistory = !suppressHistoryPush;
     suppressHistoryPush = false;
+    if (doHistory) {
+        setTimeout(() => { try { syncHistoryForScreen(screenId); } catch (e) {} }, 0);
+    }
+
+    // العمل الثقيل بعد أن تظهر الشاشة للمستخدم
+    clearTimeout(showScreen._workTimer);
+    showScreen._workTimer = setTimeout(() => {
+        try {
+            if (screenId === 'encyclopedia-screen') {
+                const enc = (typeof getEncyclopedia === 'function') ? getEncyclopedia() : [];
+                const key = [
+                    currentLang,
+                    enc.length,
+                    (appState.favorites || []).length,
+                    (typeof encShowFavOnly !== 'undefined' && encShowFavOnly) ? 1 : 0,
+                    document.getElementById('enc-search')?.value || '',
+                    document.getElementById('enc-filter')?.value || '',
+                    (typeof encyclopediaCloudLoaded !== 'undefined' && encyclopediaCloudLoaded) ? 1 : 0
+                ].join('|');
+                const box = document.getElementById('encyclopedia-container');
+                const already = box && box.childElementCount > 0 && key === showScreen._lastEncKey;
+                if (!already) {
+                    populateEncyclopedia();
+                    showScreen._lastEncKey = key;
+                }
+                if (typeof encyclopediaCloudLoaded !== 'undefined' && !encyclopediaCloudLoaded) {
+                    loadFromCloud().catch(() => {});
+                }
+            } else if (screenId === 'statistics-screen') {
+                updateStats();
+            } else if (screenId === 'profile-screen') {
+                loadFavorites();
+                loadSettings();
+                updateProfileDetails();
+            }
+        } catch (e) { console.warn('showScreen deferred work', e); }
+    }, 16);
 }
 
 /** تسلسل تدريجي للتاريخ:
@@ -21799,18 +22395,16 @@ function showScreen(screenId) {
 function syncHistoryForScreen(screenId) {
     const cur = history.state || {};
     if (screenId === 'welcome-screen') {
+        // دائماً جذر واحد — لا نكدّس طبقات على الرئيسية
         history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href);
         return;
     }
     if (MAIN_NAV_SCREENS.includes(screenId)) {
-        // من الرئيسية أو من خارج التبويبات → push طبقة واحدة
+        // طبقة واحدة فقط فوق الجذر: من الرئيسية push، وبين التبويبات replace
         if (cur.wcpRoot || cur.screen === 'welcome-screen' || !cur.screen) {
             history.pushState({ screen: screenId }, '', location.href);
-        } else if (MAIN_NAV_SCREENS.includes(cur.screen) && cur.screen !== 'welcome-screen') {
-            // تبديل تبويب ← استبدال نفس الطبقة (بدون تكديس)
-            history.replaceState({ screen: screenId }, '', location.href);
         } else {
-            history.pushState({ screen: screenId }, '', location.href);
+            history.replaceState({ screen: screenId }, '', location.href);
         }
         return;
     }
@@ -21823,7 +22417,6 @@ function syncHistoryForScreen(screenId) {
         return;
     }
     if (screenId === 'results-screen') {
-        // نفس مستوى الاختبار: لا نضيف طبقة جديدة
         history.replaceState({ screen: 'results-screen' }, '', location.href);
     }
 }
@@ -21895,15 +22488,19 @@ function initBackNavigationGuard() {
         } catch (e) {}
     };
 
+    const goHomeClean = () => {
+        try { history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href); } catch (e) {}
+        suppressHistoryPush = true;
+        showScreen('welcome-screen');
+        try { updateLevelsGrid(); } catch (e) {}
+    };
+
     const handleBackRequest = (event) => {
         // خروج برمجي من الاختبار: أسقط الطبقة ثم ثبّت الرئيسية
         if (pendingHomeAfterPop && event?.type === 'popstate') {
             pendingHomeAfterPop = false;
             ignoreNextPopState = false;
-            try { history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href); } catch (e) {}
-            suppressHistoryPush = true;
-            showScreen('welcome-screen');
-            updateLevelsGrid();
+            goHomeClean();
             return;
         }
 
@@ -21919,55 +22516,56 @@ function initBackNavigationGuard() {
         const activeScreen = document.querySelector('.screen.active')?.id || '';
         const isQuiz = activeScreen === 'quiz-screen' || document.body.classList.contains('quiz-active');
 
-        // 1) داخل الاختبار → حوار تأكيد (وإعادة الطبقة حتى لا يُغلق التطبيق)
+        // 1) داخل الاختبار → حوار تأكيد
         if (isQuiz) {
             if (event?.type === 'popstate') restoreCurrentHistoryEntry();
             handleQuizBack();
             return;
         }
 
-        // 2) نوافذ منبثقة
+        // 2) نوافذ منبثقة / قوائم
         if (closeAnyOpenLayer()) {
             if (event?.type === 'popstate') restoreCurrentHistoryEntry();
             return;
         }
 
-        // 3) النتائج → الرئيسية بتسلسل نظيف
+        // 3) النتائج → الرئيسية مباشرة
         if (activeScreen === 'results-screen') {
-            if (event?.type === 'popstate') {
-                // الطبقة سقطت بالفعل
-                try { history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href); } catch (e) {}
-                suppressHistoryPush = true;
-                showScreen('welcome-screen');
-                updateLevelsGrid();
-            } else {
-                returnHomeAfterQuiz();
+            goHomeClean();
+            return;
+        }
+
+        // 4) تبويبات رئيسية (موسوعة / إحصائيات / حسابي) → الرئيسية بنقرة واحدة
+        if (MAIN_NAV_SCREENS.includes(activeScreen) && activeScreen !== 'welcome-screen') {
+            goHomeClean();
+            return;
+        }
+
+        // 5) الرئيسية → خروج فوري من أول ضغطة، بدون أي تنبيه أو طبقة ثانية
+        //    (الخروج بحد ذاته تتكفّل به ميزة الخروج المدمجة في حزمة التطبيق)
+        if (activeScreen === 'welcome-screen' || !activeScreen) {
+            const exited = requestAppExit();
+            if (!exited && event?.type === 'popstate') {
+                // لا نعيد push للجذر — اسمح للغلاف الأصلي بالتعامل مع الخروج بطريقته
+                try { ignoreNextPopState = true; } catch (e) {}
             }
             return;
         }
 
-        // 4) موسوعة / إحصائيات / حسابي → الرئيسية (ضغطة واحدة)
-        if (activeScreen && activeScreen !== 'welcome-screen' && MAIN_NAV_SCREENS.includes(activeScreen)) {
-            if (event?.type === 'popstate') {
-                // المتصفح عاد للجذر بالفعل
-                try { history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href); } catch (e) {}
-                suppressHistoryPush = true;
-                showScreen('welcome-screen');
-            } else {
-                // backbutton بدون popstate
-                suppressHistoryPush = true;
-                try { history.replaceState({ wcpRoot: true, screen: 'welcome-screen' }, '', location.href); } catch (e) {}
-                showScreen('welcome-screen');
-            }
-            return;
-        }
-
-        // 5) الرئيسية فقط → إغلاق التطبيق
-        requestAppExit();
+        // أي شاشة أخرى → الرئيسية
+        goHomeClean();
     };
 
     window.addEventListener('popstate', handleBackRequest);
     document.addEventListener('backbutton', handleBackRequest, false);
+
+    // زر الرجوع في الهيدر
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest?.('.btn-back');
+        if (!btn) return;
+        e.preventDefault();
+        handleBackRequest({ type: 'backbutton' });
+    }, true);
 }
 
 function requestAppExit() {
@@ -21996,7 +22594,15 @@ function requestAppExit() {
         [window.App?.closeApp, window.App],
         [window.navigator?.app?.exitApp, window.navigator?.app],
         [window.Capacitor?.Plugins?.App?.exitApp, window.Capacitor?.Plugins?.App],
-        [window.Capacitor?.App?.exitApp, window.Capacitor?.App]
+        [window.Capacitor?.App?.exitApp, window.Capacitor?.App],
+        // Additional common WebView-to-app wrapper interfaces.
+        [window.JSInterface?.exitApp, window.JSInterface],
+        [window.jsInterface?.exitApp, window.jsInterface],
+        [window.NativeInterface?.exitApp, window.NativeInterface],
+        [window.AppInterface?.exitApp, window.AppInterface],
+        [window.WebView?.exitApp, window.WebView],
+        [window.median?.exitApp, window.median],
+        [window.gonative_exit_app, window]
     ];
     for (const [fn, context] of bridges) {
         if (invoke(fn, context)) return true;
@@ -22016,8 +22622,10 @@ function requestAppExit() {
         } catch (e) {}
     }
 
-    // window.close is allowed only for windows opened by script.
-    if (window.opener && invoke(window.close, window)) return true;
+    // Try window.close() unconditionally as a last resort: many WebView hosts
+    // intercept this call (onCloseWindow / similar) and finish the activity
+    // even when the page wasn't opened by script. Harmless no-op elsewhere.
+    if (invoke(window.close, window)) return true;
 
     // No visible fallback message: the native wrapper owns app closing.
     return false;
@@ -22027,10 +22635,60 @@ function updateNavActive(screenId) {
     const navMap = {'welcome-screen':0,'encyclopedia-screen':1,'statistics-screen':2,'profile-screen':3};
     const idx = navMap[screenId];
     document.querySelectorAll('.nav-item').forEach((item, i) => {
-        if (i === idx) item.classList.add('active');
-        else item.classList.remove('active');
+        item.classList.toggle('active', i === idx);
     });
 }
+
+(function initInstantBottomNav() {
+    function bind() {
+        const nav = document.getElementById('bottom-nav') || document.querySelector('.bottom-nav');
+        if (!nav || nav.dataset.instantBound === '1') return;
+        nav.dataset.instantBound = '1';
+        let lastScreen = '', lastAt = 0;
+        const go = (screenId) => {
+            if (!screenId) return;
+            const now = Date.now();
+            if (screenId === lastScreen && now - lastAt < 250) return;
+            lastScreen = screenId;
+            lastAt = now;
+            showScreen(screenId);
+        };
+        nav.addEventListener('pointerdown', (e) => {
+            const item = e.target.closest && e.target.closest('.nav-item');
+            if (!item || !nav.contains(item)) return;
+            if (e.button != null && e.button !== 0) return;
+            const screenId = item.getAttribute('data-screen');
+            if (!screenId) return;
+            nav.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n === item));
+            go(screenId);
+        }, { passive: true });
+        nav.addEventListener('click', (e) => {
+            const item = e.target.closest && e.target.closest('.nav-item');
+            if (!item || !nav.contains(item)) return;
+            e.preventDefault();
+            go(item.getAttribute('data-screen'));
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);
+    else bind();
+})();
+
+(function initHeaderScrollShadow() {
+    const onScroll = () => {
+        const header = document.querySelector('.header');
+        if (!header) return;
+        header.classList.toggle('header-scrolled', window.scrollY > 12);
+    };
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { onScroll(); ticking = false; }, { passive: true });
+    }, { passive: true });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onScroll);
+    else onScroll();
+})();
+
 
 function updateWelcomeMessage() {
     if (appState.currentUser) {
@@ -22420,6 +23078,7 @@ function loadSettings() {
     appState.settings.questionSource = source;
     updateSourceToggleLabel();
     updateThemeSettingLabel();
+    try { updateLangThumb(); } catch (e) {}
     const vb = document.getElementById('val-basic'); if(vb) vb.textContent = b;
     const vi = document.getElementById('val-inter'); if(vi) vi.textContent = i;
     const va = document.getElementById('val-adv'); if(va) va.textContent = a;
@@ -22469,42 +23128,102 @@ function toggleEncFavorites() {
     populateEncyclopedia();
 }
 
+function stripHtmlFast(html) {
+    if (!html) return '';
+    return String(html)
+        .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+        .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/gi, "'")
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function escapeEncHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+let _encFilterCatsKey = '';
+let _encClickBound = false;
+
+function ensureEncListDelegation() {
+    if (_encClickBound) return;
+    const container = document.getElementById('encyclopedia-container');
+    if (!container) return;
+    _encClickBound = true;
+    container.addEventListener('click', (e) => {
+        const favBtn = e.target.closest?.('.favorite-btn');
+        if (favBtn) {
+            e.stopPropagation();
+            const id = Number(favBtn.getAttribute('data-fav-id'));
+            if (id || favBtn.getAttribute('data-fav-id') === '0') toggleFavorite(e, id);
+            return;
+        }
+        const item = e.target.closest?.('.encyclopedia-item');
+        if (!item) return;
+        const id = item.getAttribute('data-id');
+        if (id == null) return;
+        const enc = getEncyclopedia();
+        const entry = enc.find(x => String(x.id) === String(id));
+        if (entry) showExpandedEncyclopedia(entry);
+    });
+}
+
 function populateEncyclopedia() {
     const container = document.getElementById('encyclopedia-container');
-    container.innerHTML = '';
+    if (!container) return;
+    ensureEncListDelegation();
+
     if (!encyclopediaCloudLoaded && !encyclopedia.ar.length && !encyclopedia.en.length) {
         container.innerHTML = `<p style="text-align:center;color:var(--gray);padding:40px;"><i class="fas fa-spinner fa-spin"></i> ${currentLang==='ar'?'جارٍ تحميل المقالات من Cloudflare…':'Loading articles from Cloudflare…'}</p>`;
         return;
     }
-    const enc = getEncyclopedia();
-    const searchVal = (document.getElementById('enc-search')?.value || '').toLowerCase();
-    const filterVal = document.getElementById('enc-filter')?.value || '';
 
-    // بناء قائمة الفئات في القائمة المخصصة
+    const enc = getEncyclopedia();
+    const searchVal = (document.getElementById('enc-search')?.value || '').trim().toLowerCase();
+    const filterVal = document.getElementById('enc-filter')?.value || '';
+    const favSet = new Set(appState.favorites || []);
+
     const filterMenu = document.getElementById('enc-filter-menu');
     if (filterMenu) {
-        const cats = [...new Set(enc.map(e => e.category))];
-        const cur = filterVal;
+        const cats = [];
+        const seen = new Set();
+        for (let i = 0; i < enc.length; i++) {
+            const c = enc[i].category;
+            if (c && !seen.has(c)) { seen.add(c); cats.push(c); }
+        }
+        const catsKey = cats.join('\0') + '|' + currentLang;
+        if (catsKey !== _encFilterCatsKey) {
+            _encFilterCatsKey = catsKey;
+            const allLabel = currentLang === 'ar' ? '📂 كل الفئات' : '📂 All Categories';
+            buildWcpSelectOptions(filterMenu, [{ value: '', label: allLabel }, ...cats.map(c => ({ value: c, label: c }))], filterVal);
+        }
         const allLabel = currentLang === 'ar' ? '📂 كل الفئات' : '📂 All Categories';
-        const items = [{ value: '', label: allLabel }, ...cats.map(c => ({ value: c, label: c }))];
-        buildWcpSelectOptions(filterMenu, items, cur);
         const valueEl = document.getElementById('enc-filter-value');
-        const selected = items.find(i => String(i.value) === String(cur));
-        if (valueEl) valueEl.textContent = selected ? selected.label : allLabel;
+        if (valueEl) valueEl.textContent = filterVal || allLabel;
         const wrap = document.getElementById('enc-filter-select');
-        if (wrap) wrap.dataset.value = cur;
+        if (wrap) wrap.dataset.value = filterVal;
     }
 
-    let filtered = enc.filter(entry => {
-        const isFav = appState.favorites.includes(entry.id);
-        if (encShowFavOnly && !isFav) return false;
-        if (filterVal && entry.category !== filterVal) return false;
+    const filtered = [];
+    for (let i = 0; i < enc.length; i++) {
+        const entry = enc[i];
+        if (encShowFavOnly && !favSet.has(entry.id)) continue;
+        if (filterVal && entry.category !== filterVal) continue;
         if (searchVal) {
-            const text = (entry.title + ' ' + entry.category + ' ' + entry.content).toLowerCase();
-            return text.includes(searchVal);
+            const head = ((entry.title || '') + ' ' + (entry.category || '')).toLowerCase();
+            if (!head.includes(searchVal)) {
+                if (!entry._plain) entry._plain = stripHtmlFast(entry.content).toLowerCase();
+                if (!entry._plain.includes(searchVal)) continue;
+            }
         }
-        return true;
-    });
+        filtered.push(entry);
+    }
 
     const countEl = document.getElementById('enc-count');
     if (countEl) countEl.textContent = `${currentLang==='ar'?'يعرض':'Showing'} ${filtered.length} ${currentLang==='ar'?'مقالة من':'of'} ${enc.length}`;
@@ -22514,33 +23233,29 @@ function populateEncyclopedia() {
         return;
     }
 
-    filtered.forEach(entry => {
-        const isFav = appState.favorites.includes(entry.id);
-        const item = document.createElement('div');
-        item.className = 'encyclopedia-item' + (isFav ? ' favorited' : '');
-        item.setAttribute('data-id', entry.id);
-
-        // مقتطف نصي نظيف (بدون HTML)
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = entry.content;
-        const plainText = tempDiv.textContent || tempDiv.innerText || '';
-        const snippet = plainText.substring(0, 120) + '...';
-
-        item.innerHTML = `
-            <button class="favorite-btn" onclick="toggleFavorite(event,${entry.id})" title="${currentLang==='ar'?'أضف للمفضلة':'Add to favorites'}">
-                <i class="fas fa-star" style="color:${isFav?'#bfa64a':'#c8d0b4'};font-size:20px;transition:all 0.2s;"></i>
-            </button>
-            <span class="enc-category-badge" style="background:${entry.categoryColor}">${entry.category}</span>
-            <div class="encyclopedia-title"><i class="fas fa-book"></i> ${entry.title}</div>
-            <div class="encyclopedia-content" style="color:var(--gray);font-size:14px;line-height:1.6;">${snippet}</div>
-            <div style="margin-top:10px;font-size:13px;color:var(--primary);font-weight:600;">
-                ${currentLang==='ar'?'اقرأ المزيد ←':'Read more →'}
-            </div>
-        `;
-        item.onclick = (e) => { if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) showExpandedEncyclopedia(entry); };
-        container.appendChild(item);
-    });
+    const readMore = currentLang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →';
+    const favTitle = currentLang === 'ar' ? 'أضف للمفضلة' : 'Add to favorites';
+    let html = '';
+    for (let i = 0; i < filtered.length; i++) {
+        const entry = filtered[i];
+        const isFav = favSet.has(entry.id);
+        if (!entry._snippet) {
+            const plain = stripHtmlFast(entry.content);
+            entry._snippet = plain.length > 120 ? plain.substring(0, 120) + '…' : (plain || '—');
+        }
+        const star = isFav ? '#bfa64a' : '#c8d0b4';
+        html += `<div class="encyclopedia-item${isFav ? ' favorited' : ''}" data-id="${escapeEncHtml(entry.id)}">`
+            + `<button type="button" class="favorite-btn" data-fav-id="${escapeEncHtml(entry.id)}" title="${favTitle}">`
+            + `<i class="fas fa-star" style="color:${star};font-size:20px;"></i></button>`
+            + `<span class="enc-category-badge" style="background:${escapeEncHtml(entry.categoryColor || '#8a9a63')}">${escapeEncHtml(entry.category || '')}</span>`
+            + `<div class="encyclopedia-title"><i class="fas fa-book"></i> ${escapeEncHtml(entry.title || '')}</div>`
+            + `<div class="encyclopedia-content" style="color:var(--gray);font-size:14px;line-height:1.6;">${escapeEncHtml(entry._snippet)}</div>`
+            + `<div style="margin-top:10px;font-size:13px;color:var(--primary);font-weight:600;">${readMore}</div>`
+            + `</div>`;
+    }
+    container.innerHTML = html;
 }
+
 
 function showExpandedEncyclopedia(entry) {
     const isFav = appState.favorites.includes(entry.id);
@@ -22599,6 +23314,7 @@ async function toggleFavorite(e, id) {
     const index = appState.favorites.indexOf(id);
     if (index > -1) appState.favorites.splice(index, 1);
     else appState.favorites.push(id);
+    if (showScreen) showScreen._lastEncKey = '';
     await saveUserDataToCloud();
     loadFavorites();
     populateEncyclopedia();
@@ -22844,7 +23560,7 @@ function loadQuestion() {
     const current = appState.currentQuestion + 1;
     const qLabel = t('quiz-question-label');
     const ofLabel = t('quiz-of-label');
-    document.getElementById('quiz-progress').textContent = `📌 ${qLabel} ${current} ${ofLabel} ${total}`;
+    document.getElementById('quiz-progress').textContent = `${qLabel} ${current} ${ofLabel} ${total}`;
     const pf = document.getElementById('quiz-progress-fill');
     if (pf) pf.style.width = `${Math.round((appState.currentQuestion / total) * 100)}%`;
     const expBox = document.getElementById('explanation-box');
@@ -22870,7 +23586,7 @@ function loadQuestion() {
         header.parentElement.insertBefore(meta, header);
     }
     const cls = difficulty === 1 ? '' : difficulty === 2 ? 'medium' : difficulty === 3 ? 'hard' : 'expert';
-    meta.innerHTML = `<span class="difficulty-badge ${cls}">🎯 ${currentLang==='ar'?'الصعوبة':'Difficulty'}: ${difficultyLabel(difficulty)}</span>
+    meta.innerHTML = `<span class="difficulty-badge ${cls}">${currentLang==='ar'?'الصعوبة':'Difficulty'}: ${difficultyLabel(difficulty)}</span>
                       <span class="difficulty-badge">${currentLang==='ar'?'المستوى':'Level'}: ${difficultyLabel({basic:1,intermediate:2,advanced:3,professional:4}[level] || 1)}</span>`;
     const container = document.getElementById('options-container');
     container.innerHTML = '';
@@ -23328,15 +24044,24 @@ function setLang(lang) {
     const arBtn = document.getElementById('lang-btn-ar');
     const enBtn = document.getElementById('lang-btn-en');
     if (arBtn && enBtn) {
-        if (lang === 'ar') {
-            arBtn.style.background = 'var(--primary)'; arBtn.style.color = 'white'; arBtn.style.borderColor = 'var(--primary)';
-            enBtn.style.background = 'white'; enBtn.style.color = 'var(--dark)'; enBtn.style.borderColor = 'var(--gray-light)';
-        } else {
-            enBtn.style.background = 'var(--primary)'; enBtn.style.color = 'white'; enBtn.style.borderColor = 'var(--primary)';
-            arBtn.style.background = 'white'; arBtn.style.color = 'var(--dark)'; arBtn.style.borderColor = 'var(--gray-light)';
-        }
+        arBtn.classList.toggle('is-active', lang === 'ar');
+        enBtn.classList.toggle('is-active', lang === 'en');
+        arBtn.setAttribute('aria-selected', lang === 'ar' ? 'true' : 'false');
+        enBtn.setAttribute('aria-selected', lang === 'en' ? 'true' : 'false');
     }
+    updateLangThumb();
 }
+
+// يحرّك المؤشر (thumb) داخل مفتاح اللغة إلى الزر النشط
+function updateLangThumb() {
+    const wrap = document.getElementById('lang-segmented');
+    const thumb = document.getElementById('lang-segmented-thumb');
+    const active = wrap?.querySelector('.lang-seg-btn.is-active');
+    if (!wrap || !thumb || !active) return;
+    thumb.style.width = active.offsetWidth + 'px';
+    thumb.style.left = active.offsetLeft + 'px';
+}
+window.addEventListener('resize', () => { try { updateLangThumb(); } catch (e) {} });
 
 // ===================================================
 //  ABOUT MODAL
@@ -23389,7 +24114,6 @@ function closeAboutModal() {
     if (overlay._escapeHandler) document.removeEventListener('keydown', overlay._escapeHandler);
     return true;
 }
-
 
 </script>
 </body>
