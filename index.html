@@ -202,15 +202,40 @@
         .login-screen,.register-screen {
             position:fixed;top:0;left:0;width:100%;height:100%;
             background: linear-gradient(160deg, #20291a 0%, #3c452f 50%, #6c8a49 100%);
-            display:flex;flex-direction:column;justify-content:center;align-items:center;
-            z-index:9999;padding:20px;color:white;transition:transform 0.5s ease,opacity 0.4s ease;
+            display:flex;flex-direction:column;justify-content:flex-start;align-items:center;
+            z-index:9999;padding:16px 16px 24px;color:white;transition:transform 0.5s ease,opacity 0.4s ease;
+            overflow-y:auto;-webkit-overflow-scrolling:touch;
+            padding-bottom:max(24px, env(safe-area-inset-bottom, 0px));
+        }
+        @media (min-height: 720px) {
+            .login-screen,.register-screen { justify-content:center; }
         }
         .login-container,.register-container {
             background:rgba(255,255,255,0.08);backdrop-filter:blur(24px);
-            border-radius:var(--radius-lg);padding:40px 32px;width:100%;max-width:440px;
+            border-radius:var(--radius-lg);padding:28px 22px 32px;width:100%;max-width:440px;
             box-shadow:0 24px 60px rgba(0,0,0,0.3);
             border:1px solid rgba(255,255,255,0.18);
             animation:fadeInScale 0.5s cubic-bezier(0.34,1.56,0.64,1);color:white;
+            margin:12px auto 120px; /* مساحة تحت النموذج حتى لا يغطي الكيبورد الحقول */
+            text-align: center;
+        }
+        .login-container .form-group,
+        .register-container .form-group,
+        .login-container .form-control,
+        .register-container .form-control,
+        .register-container .register-field {
+            text-align: right;
+        }
+        [dir="ltr"] .login-container .form-group,
+        [dir="ltr"] .register-container .form-group,
+        [dir="ltr"] .login-container .form-control,
+        [dir="ltr"] .register-container .form-control,
+        [dir="ltr"] .register-container .register-field {
+            text-align: left;
+        }
+        .register-screen.keyboard-open .register-container,
+        .login-screen.keyboard-open .login-container {
+            margin-bottom: 280px;
         }
         .login-title,.register-title {
             font-size:30px;font-weight:900;margin-bottom:10px;text-align:center;
@@ -258,13 +283,161 @@
         .password-rules span::before { content:'○'; margin-left:5px; color:rgba(255,255,255,.55); }
         .password-rules span.ok { color:#c7dfb5; }
         .password-rules span.ok::before { content:'✓'; color:#c7dfb5; }
+
+        /* ===== OTP DIGITS ===== */
+        .otp-digit {
+            width: 48px;
+            height: 58px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            border: 2px solid #e8ecd8;
+            border-radius: 14px;
+            background: white;
+            color: var(--dark);
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+            flex: 0 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .otp-digit:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(201,180,106,0.18);
+        }
+        body.dark-mode .otp-digit {
+            background: var(--card-bg);
+            border-color: var(--border);
+            color: var(--dark);
+        }
+        body.dark-mode .otp-digit:focus {
+            border-color: var(--accent-gold);
+        }
+        .otp-digits-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 14px;
+            direction: ltr;
+            flex-wrap: nowrap;
+        }
+        .otp-paste-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 2px dashed rgba(201,180,106,0.55);
+            background: rgba(255,255,255,0.92);
+            color: var(--dark);
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 8px;
+            direction: ltr;
+            outline: none;
+            font-family: ui-monospace, monospace;
+            margin-bottom: 8px;
+        }
+        .otp-paste-input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(201,180,106,0.18);
+        }
+        .otp-paste-hint {
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.65;
+            margin: 0 0 18px;
+            color: rgba(255,255,255,0.8);
+        }
+        .otp-digits-row {
+            margin-bottom: 10px;
+        }
+        .otp-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(160deg, #20291a 0%, #3c452f 50%, #6c8a49 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 9998;
+            padding: 16px;
+            color: white;
+            transition: transform 0.5s ease, opacity 0.4s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        @media (min-height: 700px) {
+            .otp-screen { justify-content: center; }
+        }
+        .otp-screen.hidden { display: none !important; }
+        .otp-screen .register-container { margin-bottom: 160px; }
+
         .register-btn:disabled { opacity:.5; cursor:not-allowed; transform:none!important; box-shadow:none; }
         .register-note { margin:0 0 18px; padding:10px 13px; border-radius:13px; background:rgba(0,0,0,.13); color:rgba(255,255,255,.78); font-size:11px; line-height:1.7; text-align:center; }
         .register-link { color:var(--accent-gold-light);cursor:pointer;font-weight:700;transition:var(--transition); }
         .register-link:hover { text-decoration:underline; }
         .login-footer { color:white; }
-        .back-to-login { background:none;border:none;color:rgba(255,255,255,0.8);font-size:14px;cursor:pointer;margin-bottom:18px;display:block;width:100%;text-align:center;transition:var(--transition); }
-        .back-to-login:hover { color:white; }
+        .back-to-login {
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.28);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 0 auto 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: auto;
+            max-width: 100%;
+            padding: 10px 18px;
+            border-radius: 999px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            font-family: inherit;
+        }
+        .back-to-login:hover {
+            color: white;
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.45);
+            transform: translateY(-1px);
+        }
+        .back-to-login:active { transform: scale(0.97); }
+        .register-container > .back-to-login,
+        .login-container > .back-to-login {
+            display: inline-flex;
+        }
+        .otp-paste-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 0 auto 14px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1.5px solid rgba(201,180,106,0.55);
+            background: rgba(201,180,106,0.18);
+            color: #e5cfa5;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+        .otp-paste-btn:hover {
+            background: rgba(201,180,106,0.28);
+            border-color: rgba(201,180,106,0.75);
+        }
+        .otp-paste-btn:active { transform: scale(0.96); }
+        .otp-digits-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+        }
 
         /* ===== LANGUAGE TOGGLE BUTTON ===== */
         .lang-toggle-btn {
@@ -2511,14 +2684,57 @@ body.dark-mode .wcp-select-option.is-selected {
         <div class="register-container">
             <button class="back-to-login" onclick="showLogin()" id="back-to-login-btn">← العودة لتسجيل الدخول</button>
             <h2 class="register-title" id="register-title-text">إنشاء حساب جديد</h2>
-                <p class="register-subtitle" id="register-subtitle-text">أنشئ حسابك للبدء في التعلم</p>
-                <p class="register-note" id="register-security-note">يجب أن تكون كلمة المرور 8 أحرف أو أكثر، وتحتوي على حرف كبير وحرف صغير ورقم.</p>
-                <div class="form-group register-field"><input type="text" id="register-username" class="form-control" placeholder="اسم المستخدم" autocomplete="username" aria-describedby="username-status"><button class="field-action" type="button" id="check-username-btn" title="تحقق من توفر اسم المستخدم"><i class="fas fa-user-check"></i></button><div class="field-status" id="username-status"></div></div>
-                <div class="form-group register-field"><input type="email" id="register-email" class="form-control" placeholder="البريد الإلكتروني" autocomplete="email" aria-describedby="email-status"><button class="field-action" type="button" id="check-email-btn" title="تحقق من توفر البريد"><i class="fas fa-envelope-circle-check"></i></button><div class="field-status" id="email-status"></div></div>
-                <div class="form-group register-field"><input type="password" id="register-password" class="form-control" placeholder="كلمة المرور" autocomplete="new-password" aria-describedby="password-strength"><button class="field-action" type="button" data-toggle-password="register-password" title="إظهار أو إخفاء كلمة المرور"><i class="fas fa-eye"></i></button><div class="password-meter" id="password-strength"><div class="password-meter-head"><span id="password-strength-label">قوة كلمة المرور</span><strong id="password-strength-value">—</strong></div><div class="password-bars" id="password-bars"><i></i><i></i><i></i><i></i></div><div class="password-rules"><span id="rule-length">8 أحرف على الأقل</span><span id="rule-uppercase">حرف كبير واحد</span><span id="rule-lowercase">حرف صغير واحد</span><span id="rule-number">رقم واحد</span></div></div></div>
-                <div class="form-group register-field"><input type="password" id="register-confirm-password" class="form-control" placeholder="تأكيد كلمة المرور" autocomplete="new-password" aria-describedby="confirm-status"><button class="field-action" type="button" data-toggle-password="register-confirm-password" title="إظهار أو إخفاء التأكيد"><i class="fas fa-eye"></i></button><div class="field-status" id="confirm-status"></div></div>
+            <p class="register-subtitle" id="register-subtitle-text">الخطوة الأولى: التحقق من البريد الإلكتروني</p>
+
+            <!-- خطوة 1: البريد فقط -->
+            <div id="register-step-email">
+                <p class="register-note" id="register-email-step-note">أدخل بريدك الإلكتروني المسجّل، وسنرسل إليك رمز تحقق مكوّناً من 6 أرقام.</p>
+                <div class="form-group register-field">
+                    <input type="email" id="register-email" class="form-control" placeholder="البريد الإلكتروني" autocomplete="email" aria-describedby="email-status">
+                    <button class="field-action" type="button" id="check-email-btn" title="تحقق من توفر البريد"><i class="fas fa-envelope-circle-check"></i></button>
+                    <div class="field-status" id="email-status"></div>
+                </div>
                 <div id="register-error" class="error-message hidden"></div>
-                <button class="register-btn" onclick="register()" id="register-btn-text" disabled>إنشاء الحساب</button>
+                <button class="register-btn" onclick="sendEmailOtp()" id="register-send-otp-btn">إرسال رمز التحقق</button>
+            </div>
+
+            <!-- خطوة 2: التفاصيل بعد التحقق (مخفية أولاً) -->
+            <div id="register-step-details" class="hidden">
+                <div style="background:rgba(0,0,0,0.15);border-radius:14px;padding:12px 14px;margin-bottom:14px;text-align:center;">
+                    <span style="opacity:.85;font-size:13px;">تم التحقق من البريد الإلكتروني بنجاح</span><br>
+                    <strong id="register-verified-email" style="color:#e5cfa5;direction:ltr;font-size:14px;"></strong>
+                </div>
+                <div class="form-group register-field" id="username-field-wrap">
+                    <label for="register-username" style="display:block;font-size:13px;font-weight:700;margin-bottom:6px;opacity:.9;">اسم المستخدم</label>
+                    <input type="text" id="register-username" class="form-control" placeholder="مثال: well_operator" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="username-status username-hint" style="font-size:16px;">
+                    <button class="field-action" type="button" id="check-username-btn" title="تحقق من توفر اسم المستخدم"><i class="fas fa-user-check"></i></button>
+                    <div class="field-status" id="username-status"></div>
+                    <p id="username-hint" style="font-size:11px;opacity:.7;margin:6px 4px 0;line-height:1.5;">يجب أن يتكون من 4 أحرف على الأقل، ويُسمح بالأحرف والأرقام وعلامة (_) فقط.</p>
+                </div>
+                <p class="register-note" id="register-security-note">يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، وأن تتضمن حرفاً كبيراً وحرفاً صغيراً ورقماً.</p>
+                <div class="form-group register-field">
+                    <input type="password" id="register-password" class="form-control" placeholder="كلمة المرور" style="font-size:16px;" autocomplete="new-password" aria-describedby="password-strength">
+                    <button class="field-action" type="button" data-toggle-password="register-password" title="إظهار أو إخفاء كلمة المرور"><i class="fas fa-eye"></i></button>
+                    <div class="password-meter" id="password-strength">
+                        <div class="password-meter-head"><span id="password-strength-label">قوة كلمة المرور</span><strong id="password-strength-value">—</strong></div>
+                        <div class="password-bars" id="password-bars"><i></i><i></i><i></i><i></i></div>
+                        <div class="password-rules">
+                            <span id="rule-length">8 أحرف على الأقل</span>
+                            <span id="rule-uppercase">حرف كبير واحد</span>
+                            <span id="rule-lowercase">حرف صغير واحد</span>
+                            <span id="rule-number">رقم واحد</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group register-field">
+                    <input type="password" id="register-confirm-password" class="form-control" placeholder="تأكيد كلمة المرور" style="font-size:16px;" autocomplete="new-password" aria-describedby="confirm-status">
+                    <button class="field-action" type="button" data-toggle-password="register-confirm-password" title="إظهار أو إخفاء التأكيد"><i class="fas fa-eye"></i></button>
+                    <div class="field-status" id="confirm-status"></div>
+                </div>
+                <div id="register-details-error" class="error-message hidden"></div>
+                <button class="register-btn" onclick="completeRegistration()" id="register-btn-text" disabled>إنشاء الحساب</button>
+                <button type="button" onclick="resetRegisterToEmailStep()" style="background:none;border:none;color:rgba(255,255,255,0.8);font-size:13px;cursor:pointer;margin-top:10px;width:100%;text-decoration:underline;">← تغيير البريد الإلكتروني</button>
+            </div>
         </div>
     </div>
 
@@ -2603,6 +2819,42 @@ body.dark-mode .wcp-select-option.is-selected {
                 <button class="btn" style="margin-top:20px;" id="confirm-btn" onclick="checkAnswer()">✅ تأكيد الإجابة</button>
                 <button class="btn btn-secondary hidden quiz-next-action" style="margin-top:10px;" id="next-btn" onclick="nextQuestion()">➡️ السؤال التالي</button>
             </div>
+        </div>
+    </div>
+
+
+    <!-- OTP VERIFICATION SCREEN -->
+    <div class="otp-screen hidden" id="otp-screen">
+        <div class="register-container" style="max-width:440px;width:100%;">
+            <button class="back-to-login" onclick="closeOtpScreen()" id="otp-back-btn">← العودة وتعديل البريد</button>
+            <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f5e6a6,#c9b46a);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;box-shadow:0 10px 24px rgba(201,180,106,0.35);">✉️</div>
+            <h2 class="register-title" id="otp-title-text">التحقق من البريد الإلكتروني</h2>
+            <p class="register-subtitle" id="otp-subtitle-text" style="margin-bottom:8px;">تم إرسال رمز تحقق مكوّن من 6 أرقام إلى:</p>
+            <p id="otp-email-display" style="color:#e5cfa5;font-weight:700;font-size:14px;margin-bottom:24px;direction:ltr;text-align:center;"></p>
+            
+            <div class="otp-digits-wrap">
+                <div class="otp-digits-row" id="otp-digits-row">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" autocomplete="one-time-code" aria-label="digit 1">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" aria-label="digit 2">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" aria-label="digit 3">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" aria-label="digit 4">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" aria-label="digit 5">
+                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]" class="otp-digit" aria-label="digit 6">
+                </div>
+                <button type="button" class="otp-paste-btn" id="otp-paste-btn" onclick="pasteOtpFromClipboard()">
+                    <i class="fas fa-paste"></i> لصق الرمز
+                </button>
+            </div>
+            <p class="otp-paste-hint" id="otp-paste-hint">أدخل الرمز يدوياً أو استخدم زر اللصق</p>
+            
+            <div style="background:rgba(0,0,0,0.18);border-radius:14px;padding:14px;margin-bottom:18px;text-align:center;">
+                <span style="color:rgba(255,255,255,0.75);font-size:14px;">صلاحية الرمز: </span>
+                <strong id="otp-timer" style="color:#e5cfa5;font-size:18px;font-variant-numeric:tabular-nums;">10:00</strong>
+            </div>
+            
+            <div id="otp-error" class="error-message hidden"></div>
+            <button class="login-btn" onclick="verifyOtp()" id="otp-verify-btn" style="margin-bottom:12px;">تأكيد الرمز</button>
+            <button class="btn btn-outline" onclick="resendOtp()" id="otp-resend" disabled style="width:100%;margin-bottom:12px;background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35);color:#fff;">إعادة إرسال الرمز</button>
         </div>
     </div>
 
@@ -21715,11 +21967,17 @@ async function saveToCloud(data) {
 // ===================================================
 function showRegister() {
     document.getElementById('login-screen').classList.add('hidden');
+    const otp = document.getElementById('otp-screen');
+    if (otp) otp.classList.add('hidden');
     document.getElementById('register-screen').classList.remove('hidden');
+    try { resetRegisterToEmailStep(); } catch (_) {}
 }
 function showLogin() {
     document.getElementById('register-screen').classList.add('hidden');
+    const otp = document.getElementById('otp-screen');
+    if (otp) otp.classList.add('hidden');
     document.getElementById('login-screen').classList.remove('hidden');
+    try { resetRegisterToEmailStep(); } catch (_) {}
 }
 
 async function login() {
@@ -21792,7 +22050,10 @@ function updateConfirmStatus() {
 function updateRegisterButtonState() {
     const username=document.getElementById('register-username')?.value.trim()||'', email=document.getElementById('register-email')?.value.trim()||'', password=document.getElementById('register-password')?.value||'', confirm=document.getElementById('register-confirm-password')?.value||'';
     const validEmail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    const valid=username.length>=4 && /^[a-zA-Z0-9_؀-ۿ]+$/.test(username) && validEmail && passwordPolicy(password).valid && password===confirm && registrationAvailability.username===true && registrationAvailability.email===true;
+    // بعد التحقق من البريد نعتبر البريد صالحاً حتى لو لم يُفحص محلياً
+    const emailOk = window._emailVerified ? true : (validEmail && registrationAvailability.email === true);
+    const usernameOk = username.length>=4 && /^[a-zA-Z0-9_؀-ۿ]+$/.test(username) && registrationAvailability.username === true;
+    const valid = usernameOk && emailOk && passwordPolicy(password).valid && password===confirm;
     const button=document.getElementById('register-btn-text'); if (button) button.disabled=!valid;
 }
 async function checkRegistrationAvailability(kind) {
@@ -21816,93 +22077,549 @@ function setupRegistrationValidation() {
     updatePasswordStrength(); updateConfirmStatus(); updateRegisterButtonState();
 }
 
-async function register() {
+async function sendEmailOtp() {
     const overlay = document.getElementById('loading-overlay');
-    overlay.classList.remove('hidden');
+    if (overlay) overlay.classList.remove('hidden');
+
+    const email = document.getElementById('register-email').value.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!email) {
+        showError('register-error', currentLang==='ar' ? 'يرجى إدخال البريد الإلكتروني' : 'Please enter your email address');
+        if (overlay) overlay.classList.add('hidden');
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        showError('register-error', currentLang==='ar' ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format');
+        if (overlay) overlay.classList.add('hidden');
+        return;
+    }
+
+    window._otpEmail = email;
+    window._emailVerified = false;
+    window._pendingUser = { email };
+
+    try {
+        const res = await fetch(CLOUD_CONFIG.API_URL.replace(/\/$/, '') + '/api/send-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email, lang: currentLang })
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok || data.ok === false) {
+            const err = data.error || data.message || 'send_failed';
+            let msg;
+            if (err === 'email_already_registered') {
+                setRegistrationStatus('email-status', currentLang==='ar' ? 'هذا البريد مسجّل مسبقاً' : 'This email is already registered', 'invalid');
+                msg = currentLang==='ar' ? 'هذا البريد الإلكتروني مسجّل مسبقاً' : 'This email address is already registered';
+            } else if (err === 'rate_limited') {
+                const wait = data.retryAfterSeconds || 60;
+                msg = currentLang==='ar' ? `يرجى الانتظار ${wait} ثانية قبل إعادة المحاولة` : `Please wait ${wait}s before trying again`;
+            } else if (err === 'invalid_email_format') {
+                msg = currentLang==='ar' ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format';
+            } else {
+                msg = currentLang==='ar' ? (data.message || 'تعذّر إرسال رمز التحقق. حاول مرة أخرى.') : (data.message || 'Unable to send verification code. Please try again.');
+            }
+            showError('register-error', msg);
+            if (overlay) overlay.classList.add('hidden');
+            return;
+        }
+
+        if (overlay) overlay.classList.add('hidden');
+        openOtpScreen(email);
+    } catch (e) {
+        console.warn('sendEmailOtp failed', e);
+        showError('register-error', currentLang==='ar' ? 'تعذّر الاتصال بالخادم. تحقق من اتصال الإنترنت.' : 'Could not reach the server. Check your internet connection.');
+        if (overlay) overlay.classList.add('hidden');
+    }
+}
+
+/** @deprecated استخدم sendEmailOtp ثم completeRegistration */
+async function register() {
+    if (window._emailVerified) return completeRegistration();
+    return sendEmailOtp();
+}
+
+function resetRegisterToEmailStep() {
+    window._emailVerified = false;
+    window._pendingUser = null;
+    window._otpEmail = null;
+    const stepEmail = document.getElementById('register-step-email');
+    const stepDetails = document.getElementById('register-step-details');
+    if (stepEmail) stepEmail.classList.remove('hidden');
+    if (stepDetails) stepDetails.classList.add('hidden');
+    const err = document.getElementById('register-error');
+    if (err) { err.classList.add('hidden'); err.textContent = ''; }
+    const emailInput = document.getElementById('register-email');
+    if (emailInput) { emailInput.readOnly = false; emailInput.disabled = false; }
+    const sub = document.getElementById('register-subtitle-text');
+    if (sub) sub.textContent = currentLang === 'ar' ? 'الخطوة الأولى: التحقق من البريد الإلكتروني' : 'Step 1: Verify your email address';
+}
+
+function showRegisterDetailsStep(email) {
+    window._emailVerified = true;
+    window._otpEmail = email;
+    registrationAvailability.email = true;
+    const stepEmail = document.getElementById('register-step-email');
+    const stepDetails = document.getElementById('register-step-details');
+    if (stepEmail) stepEmail.classList.add('hidden');
+    if (stepDetails) stepDetails.classList.remove('hidden');
+    const verifiedEl = document.getElementById('register-verified-email');
+    if (verifiedEl) verifiedEl.textContent = email;
+    const emailInput = document.getElementById('register-email');
+    if (emailInput) { emailInput.value = email; emailInput.readOnly = true; }
+    const sub = document.getElementById('register-subtitle-text');
+    if (sub) sub.textContent = currentLang === 'ar' ? 'أكمل بيانات حسابك للمتابعة' : 'Complete your account details to continue';
+    const err = document.getElementById('register-details-error');
+    if (err) { err.classList.add('hidden'); err.textContent = ''; }
+    setTimeout(() => document.getElementById('register-username')?.focus(), 200);
+    try { updateRegisterButtonState(); } catch (_) {}
+}
+
+async function completeRegistration() {
+    if (!window._emailVerified || !window._otpEmail) {
+        showError('register-details-error', currentLang==='ar' ? 'يلزم التحقق من البريد الإلكتروني أولاً' : 'Email verification is required first');
+        resetRegisterToEmailStep();
+        return;
+    }
+
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) overlay.classList.remove('hidden');
 
     const username = document.getElementById('register-username').value.trim();
-    const email = document.getElementById('register-email').value.trim();
+    const email = window._otpEmail;
     const password = document.getElementById('register-password').value;
     const confirm = document.getElementById('register-confirm-password').value;
 
-    // ✅ التحقق من الحقول
-    if (!username || !email || !password || !confirm) {
-        showError('register-error', currentLang==='ar' ? '⚠️ يرجى ملء جميع الحقول' : '⚠️ Please fill all fields');
-        overlay.classList.add('hidden'); return;
+    if (!username || !password || !confirm) {
+        showError('register-details-error', currentLang==='ar' ? 'يرجى استكمال جميع الحقول المطلوبة' : 'Please complete all required fields');
+        if (overlay) overlay.classList.add('hidden');
+        return;
     }
-    // ✅ اسم المستخدم لا يقل عن 4 أحرف
     if (username.length < 4) {
-        showError('register-error', currentLang==='ar' ? '⚠️ اسم المستخدم يجب أن يكون 4 أحرف على الأقل' : '⚠️ Username must be at least 4 characters');
-        overlay.classList.add('hidden'); return;
+        showError('register-details-error', currentLang==='ar' ? 'يجب أن يتكون اسم المستخدم من 4 أحرف على الأقل' : 'Username must be at least 4 characters');
+        if (overlay) overlay.classList.add('hidden');
+        return;
     }
-    // ✅ اسم المستخدم أحرف وأرقام فقط
     if (!/^[a-zA-Z0-9_؀-ۿ]+$/.test(username)) {
-        showError('register-error', currentLang==='ar' ? '⚠️ اسم المستخدم يحتوي على رموز غير مسموحة' : '⚠️ Username contains invalid characters');
-        overlay.classList.add('hidden'); return;
+        showError('register-details-error', currentLang==='ar' ? 'اسم المستخدم يحتوي على رموز غير مسموح بها' : 'Username contains invalid characters');
+        if (overlay) overlay.classList.add('hidden');
+        return;
     }
-    // ✅ التحقق من صحة البريد الإلكتروني
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!emailRegex.test(email)) {
-        showError('register-error', currentLang==='ar' ? '⚠️ البريد الإلكتروني غير صحيح - تأكد من الصيغة: example@domain.com' : '⚠️ Invalid email - use format: example@domain.com');
-        overlay.classList.add('hidden'); return;
-    }
-    // ✅ كلمة المرور قوية: 8 أحرف، حرف كبير، حرف صغير، ورقم
     const passwordRules = passwordPolicy(password).rules;
     if (!passwordRules.length || !passwordRules.uppercase || !passwordRules.lowercase || !passwordRules.number) {
-        showError('register-error', currentLang==='ar' ? '⚠️ كلمة المرور يجب أن تتكون من 8 أحرف على الأقل، وتحتوي على حرف كبير وحرف صغير ورقم' : '⚠️ Password must be at least 8 characters and include an uppercase letter, a lowercase letter, and a number');
-        overlay.classList.add('hidden'); return;
+        showError('register-details-error', currentLang==='ar' ? 'كلمة المرور لا تستوفي متطلبات الأمان' : 'Password does not meet security requirements');
+        if (overlay) overlay.classList.add('hidden');
+        return;
     }
-    // ✅ تطابق كلمة المرور
     if (password !== confirm) {
-        showError('register-error', currentLang==='ar' ? '⚠️ كلمة المرور غير متطابقة' : '⚠️ Passwords do not match');
-        overlay.classList.add('hidden'); return;
+        showError('register-details-error', currentLang==='ar' ? 'كلمتا المرور غير متطابقتين' : 'Passwords do not match');
+        if (overlay) overlay.classList.add('hidden');
+        return;
     }
 
-    const allData = (await loadFromCloud()) || { users: [] };
-    if (!allData.users) allData.users = [];
+    try {
+        const allData = (await loadFromCloud()) || { users: [] };
+        if (!allData.users) allData.users = [];
 
-    // ✅ تفريق رسائل الخطأ: هل المستخدم أم الإيميل موجود؟
-    if (allData.users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
-        registrationAvailability.username = false;
-        setRegistrationStatus('username-status', currentLang==='ar' ? '✗ اسم المستخدم محجوز، اختر اسمًا آخر' : '✗ Username is already taken', 'invalid');
-        showError('register-error', currentLang==='ar' ? '⚠️ اسم المستخدم محجوز، اختر اسماً آخر' : '⚠️ Username already taken, choose another');
-        overlay.classList.add('hidden'); return;
+        if (allData.users.some(u => String(u.username || '').toLowerCase() === username.toLowerCase())) {
+            setRegistrationStatus('username-status', currentLang==='ar' ? 'اسم المستخدم غير متاح' : 'Username is not available', 'invalid');
+            showError('register-details-error', currentLang==='ar' ? 'اسم المستخدم غير متاح، يرجى اختيار اسم آخر' : 'Username is unavailable. Please choose another.');
+            if (overlay) overlay.classList.add('hidden');
+            return;
+        }
+        if (allData.users.some(u => String(u.email || '').toLowerCase() === email.toLowerCase())) {
+            showError('register-details-error', currentLang==='ar' ? 'هذا البريد الإلكتروني مسجّل مسبقاً' : 'This email is already registered');
+            if (overlay) overlay.classList.add('hidden');
+            return;
+        }
+
+        const newUser = { username, email, password: btoa(password) };
+        const userKey = `user_${username}`;
+        allData.users.push(newUser);
+        allData[userKey] = {
+            favorites: [],
+            profileAvatar: '',
+            settings: { questions: { basic:45, intermediate:45, advanced:45, professional:45 }, time:12, questionSource: 'new' },
+            stats: { totalQuizzes:0, totalScore:0, totalTime:0, avgScore:0, levelProgress: { basic:0, intermediate:0, advanced:0, professional:0 } },
+            completedQuestions: { basic:[], intermediate:[], advanced:[], professional:[] }
+        };
+
+        await saveToCloud(allData);
+        _cloudDataCache = allData;
+
+        window._pendingUser = null;
+        window._emailVerified = false;
+
+        appState.currentUser = { username, email };
+        localStorage.setItem('rememberedUser', JSON.stringify(appState.currentUser));
+        sessionStorage.setItem('currentUser', JSON.stringify(appState.currentUser));
+
+        await loadUserDataFromCloud();
+        if (overlay) overlay.classList.add('hidden');
+
+        document.getElementById('otp-screen')?.classList.add('hidden');
+        document.getElementById('register-screen')?.classList.add('hidden');
+        document.getElementById('login-screen')?.classList.add('hidden');
+        showScreen('welcome-screen');
+        updateWelcomeMessage();
+        playSound('start');
+        showToast(currentLang === 'ar' ? 'تم إنشاء حسابك بنجاح' : 'Your account has been created successfully', 'success', 4000);
+        resetRegisterToEmailStep();
+    } catch (e) {
+        console.warn('completeRegistration failed', e);
+        showError('register-details-error', currentLang==='ar' ? 'تعذّر إنشاء الحساب. يرجى المحاولة مرة أخرى.' : 'Could not create the account. Please try again.');
+        if (overlay) overlay.classList.add('hidden');
     }
-    if (allData.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-        registrationAvailability.email = false;
-        setRegistrationStatus('email-status', currentLang==='ar' ? '✗ البريد الإلكتروني مسجل مسبقًا' : '✗ Email is already registered', 'invalid');
-        showError('register-error', currentLang==='ar' ? '⚠️ هذا البريد الإلكتروني مسجل مسبقاً' : '⚠️ This email is already registered');
-        overlay.classList.add('hidden'); return;
+}
+
+let otpTimer = null;
+let otpResendCooldownTimer = null;
+
+function openOtpScreen(email) {
+    document.getElementById('register-screen').classList.add('hidden');
+    const otpScreen = document.getElementById('otp-screen');
+    otpScreen.classList.remove('hidden');
+    document.getElementById('otp-email-display').textContent = email;
+    document.querySelectorAll('.otp-digit').forEach(i => { i.value = ''; i.style.borderColor = ''; });
+    const errEl = document.getElementById('otp-error');
+    if (errEl) { errEl.classList.add('hidden'); errEl.textContent = ''; }
+    startOtpCountdown(600);
+
+    const resendBtn = document.getElementById('otp-resend');
+    if (resendBtn) {
+        resendBtn.disabled = true;
+        let cooldown = 60;
+        resendBtn.textContent = currentLang === 'ar' ? `إعادة الإرسال خلال ${cooldown} ث` : `Resend in ${cooldown}s`;
+        if (otpResendCooldownTimer) clearInterval(otpResendCooldownTimer);
+        otpResendCooldownTimer = setInterval(() => {
+            cooldown--;
+            if (cooldown <= 0) {
+                clearInterval(otpResendCooldownTimer);
+                otpResendCooldownTimer = null;
+                resendBtn.disabled = false;
+                resendBtn.textContent = currentLang === 'ar' ? 'إعادة إرسال الرمز' : 'Resend verification code';
+            } else {
+                resendBtn.textContent = currentLang === 'ar' ? `إعادة الإرسال خلال ${cooldown} ث` : `Resend in ${cooldown}s`;
+            }
+        }, 1000);
+    }
+    setTimeout(() => document.querySelector('.otp-digit')?.focus(), 300);
+}
+
+function closeOtpScreen() {
+    clearInterval(otpTimer);
+    otpTimer = null;
+    if (otpResendCooldownTimer) { clearInterval(otpResendCooldownTimer); otpResendCooldownTimer = null; }
+    document.getElementById('otp-screen').classList.add('hidden');
+    document.getElementById('register-screen').classList.remove('hidden');
+    // العودة لخطوة البريد إن لم يكتمل التحقق
+    if (!window._emailVerified) {
+        const stepEmail = document.getElementById('register-step-email');
+        const stepDetails = document.getElementById('register-step-details');
+        if (stepEmail) stepEmail.classList.remove('hidden');
+        if (stepDetails) stepDetails.classList.add('hidden');
+    }
+}
+
+function startOtpCountdown(seconds) {
+    clearInterval(otpTimer);
+    let remaining = seconds;
+    const el = document.getElementById('otp-timer');
+    const update = () => {
+        const m = Math.floor(Math.max(0, remaining) / 60);
+        const s = Math.max(0, remaining) % 60;
+        if (el) el.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+        if (remaining <= 0) {
+            clearInterval(otpTimer);
+            otpTimer = null;
+            if (el) el.textContent = '0:00';
+            const resendBtn = document.getElementById('otp-resend');
+            if (resendBtn) resendBtn.disabled = false;
+        }
+        remaining--;
+    };
+    update();
+    otpTimer = setInterval(update, 1000);
+}
+
+async function verifyOtp() {
+    const digits = document.querySelectorAll('.otp-digit');
+    const otp = [...digits].map(d => d.value).join('');
+    if (otp.length !== 6) {
+        showToast(currentLang === 'ar' ? 'يرجى إدخال رمز التحقق بالكامل' : 'Please enter the complete verification code', 'warning');
+        return;
     }
 
-    registrationAvailability.username = true;
-    registrationAvailability.email = true;
+    const btn = document.getElementById('otp-verify-btn');
+    if (btn) {
+        btn.disabled = true;
+        btn.textContent = currentLang === 'ar' ? 'جارٍ التحقق...' : 'Verifying...';
+    }
 
-    const newUser = { username, email, password: btoa(password) };
-    allData.users.push(newUser);
+    const email = window._otpEmail || window._pendingUser?.email;
+    if (!email) {
+        showToast(currentLang === 'ar' ? 'بيانات البريد غير متوفرة. أعد المحاولة.' : 'Email details are missing. Please try again.', 'error');
+        if (btn) { btn.disabled = false; btn.textContent = currentLang === 'ar' ? 'تأكيد الرمز' : 'Confirm code'; }
+        return;
+    }
 
-    const userKey = `user_${username}`;
-    allData[userKey] = {
-        favorites: [],
-        profileAvatar: '',
-        settings: { questions: { basic:45, intermediate:45, advanced:45, professional:45 }, time:12 },
-        stats: { totalQuizzes:0, totalScore:0, totalTime:0, avgScore:0, levelProgress: { basic:0, intermediate:0, advanced:0, professional:0 } },
-        completedQuestions: { basic:[], intermediate:[], advanced:[], professional:[] }
+    try {
+        const res = await fetch(CLOUD_CONFIG.API_URL.replace(/\/$/, '') + '/api/verify-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email, otp })
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!data.ok) {
+            const reason = data.reason || 'mismatch';
+            let msg;
+            if (reason === 'mismatch') msg = currentLang === 'ar' ? 'رمز التحقق غير صحيح' : 'Incorrect verification code';
+            else if (reason === 'expired') msg = currentLang === 'ar' ? 'انتهت صلاحية رمز التحقق' : 'Verification code has expired';
+            else if (reason === 'not_found') msg = currentLang === 'ar' ? 'انتهت جلسة التحقق. يرجى طلب رمز جديد.' : 'Verification session expired. Please request a new code.';
+            else if (reason === 'too_many_attempts') msg = currentLang === 'ar' ? 'تم تجاوز الحد المسموح من المحاولات. يرجى طلب رمز جديد.' : 'Too many attempts. Please request a new code.';
+            else msg = currentLang === 'ar' ? 'تعذّر التحقق من الرمز' : 'Verification failed';
+            showToast(msg, 'error', 3500);
+            const errEl = document.getElementById('otp-error');
+            if (errEl) { errEl.textContent = msg; errEl.classList.remove('hidden'); }
+            digits.forEach(d => { d.value = ''; d.style.borderColor = ''; });
+            digits[0]?.focus();
+            return;
+        }
+
+        // نجح التحقق — افتح خطوة إدخال التفاصيل
+        clearInterval(otpTimer);
+        otpTimer = null;
+        window._emailVerified = true;
+        window._otpEmail = email;
+        window._pendingUser = { email };
+
+        document.getElementById('otp-screen').classList.add('hidden');
+        document.getElementById('register-screen').classList.remove('hidden');
+        showRegisterDetailsStep(email);
+        showToast(currentLang === 'ar' ? 'تم التحقق من البريد بنجاح. أكمل بيانات حسابك.' : 'Email verified successfully. Complete your account details.', 'success', 3000);
+    } catch (e) {
+        console.warn('verifyOtp failed', e);
+        showToast(currentLang === 'ar' ? 'تعذّر الاتصال. يرجى المحاولة مرة أخرى.' : 'Connection failed. Please try again.', 'error');
+    } finally {
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = currentLang === 'ar' ? 'تأكيد الرمز' : 'Confirm code';
+        }
+    }
+}
+
+async function resendOtp() {
+    const btn = document.getElementById('otp-resend');
+    const email = window._otpEmail || window._pendingUser?.email;
+    if (!email) {
+        showToast(currentLang === 'ar' ? 'بيانات البريد غير متوفرة. أعد المحاولة.' : 'Email details are missing. Please try again.', 'error');
+        return;
+    }
+    if (btn) btn.disabled = true;
+    try {
+        const res = await fetch(CLOUD_CONFIG.API_URL.replace(/\/$/, '') + '/api/send-otp', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email, lang: currentLang })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || data.ok === false) {
+            if (data.error === 'rate_limited') {
+                const wait = data.retryAfterSeconds || 60;
+                showToast(currentLang === 'ar' ? `يرجى الانتظار ${wait} ثانية` : `Please wait ${wait} seconds`, 'warning', 3000);
+            } else {
+                throw new Error(data.message || data.error || 'resend_failed');
+            }
+            if (btn) btn.disabled = false;
+            return;
+        }
+        showToast(currentLang === 'ar' ? 'تم إرسال رمز تحقق جديد' : 'A new verification code has been sent', 'success');
+        startOtpCountdown(600);
+        let cooldown = 60;
+        if (otpResendCooldownTimer) clearInterval(otpResendCooldownTimer);
+        if (btn) btn.textContent = currentLang === 'ar' ? `إعادة الإرسال خلال ${cooldown} ث` : `Resend in ${cooldown}s`;
+        otpResendCooldownTimer = setInterval(() => {
+            cooldown--;
+            if (cooldown <= 0) {
+                clearInterval(otpResendCooldownTimer);
+                otpResendCooldownTimer = null;
+                if (btn) {
+                    btn.disabled = false;
+                    btn.textContent = currentLang === 'ar' ? 'إعادة إرسال الرمز' : 'Resend verification code';
+                }
+            } else if (btn) {
+                btn.textContent = currentLang === 'ar' ? `إعادة الإرسال خلال ${cooldown} ث` : `Resend in ${cooldown}s`;
+            }
+        }, 1000);
+    } catch (e) {
+        showToast(currentLang === 'ar' ? `❌ ${e.message || 'فشل الإرسال'}` : `❌ ${e.message || 'Send failed'}`, 'error');
+        if (btn) btn.disabled = false;
+    }
+}
+
+function fillOtpDigits(code) {
+    const digits = document.querySelectorAll('.otp-digit');
+    const clean = String(code || '').replace(/\D/g, '').slice(0, 6);
+    digits.forEach((d, i) => {
+        d.value = clean[i] || '';
+        d.style.borderColor = clean[i] ? '#c9b46a' : '';
+    });
+    return clean;
+}
+
+async function pasteOtpFromClipboard() {
+    const btn = document.getElementById('otp-paste-btn');
+    const tryFill = (text) => {
+        const clean = fillOtpDigits(text);
+        if (!clean) {
+            showToast(currentLang === 'ar' ? 'لم يتم العثور على رمز في الحافظة' : 'No code found in clipboard', 'warning', 2500);
+            return false;
+        }
+        if (clean.length === 6) {
+            showToast(currentLang === 'ar' ? 'تم لصق الرمز' : 'Code pasted', 'success', 1500);
+            setTimeout(() => verifyOtp(), 250);
+        } else {
+            showToast(currentLang === 'ar' ? `تم لصق ${clean.length} أرقام` : `Pasted ${clean.length} digits`, 'info', 1800);
+            const digits = document.querySelectorAll('.otp-digit');
+            if (digits[clean.length]) digits[clean.length].focus();
+            else digits[Math.min(5, clean.length - 1)]?.focus();
+        }
+        return true;
     };
 
-    await saveToCloud(allData);
+    try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+            const text = await navigator.clipboard.readText();
+            tryFill(text);
+            return;
+        }
+    } catch (err) {
+        console.warn('clipboard read failed', err);
+    }
 
-    appState.currentUser = newUser;
-    localStorage.setItem('rememberedUser', JSON.stringify(newUser));
-    sessionStorage.setItem('currentUser', JSON.stringify(newUser));
-
-    await loadUserDataFromCloud();
-    overlay.classList.add('hidden');
-    document.getElementById('register-screen').classList.add('hidden');
-    showScreen('welcome-screen');
-    updateWelcomeMessage();
-    playSound('start');
+    // fallback: prompt
+    const manual = window.prompt(currentLang === 'ar' ? 'الصق رمز التحقق هنا:' : 'Paste verification code here:');
+    if (manual != null) tryFill(manual);
 }
+
+function setupOtpDigitInputs() {
+    const digits = document.querySelectorAll('.otp-digit');
+    if (!digits.length) return;
+
+    const applyAndMaybeVerify = (code) => {
+        const clean = fillOtpDigits(code);
+        if (clean.length === 6) setTimeout(() => verifyOtp(), 200);
+        return clean;
+    };
+
+    digits.forEach((input, index) => {
+        if (input.dataset.otpBound === '1') return;
+        input.dataset.otpBound = '1';
+
+        // beforeinput: التقاط اللصق قبل أن يقتطع maxlength=1
+        input.addEventListener('beforeinput', (e) => {
+            if (e.inputType === 'insertFromPaste' && e.data) {
+                e.preventDefault();
+                applyAndMaybeVerify(e.data);
+            }
+        });
+
+        input.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 1) {
+                applyAndMaybeVerify(val);
+                const filled = [...digits].map(d => d.value).join('').length;
+                if (filled < 6 && digits[filled]) digits[filled].focus();
+                else if (filled >= 6) digits[5]?.focus();
+                return;
+            }
+            e.target.value = val.slice(0, 1);
+            e.target.style.borderColor = e.target.value ? '#c9b46a' : '';
+            if (e.target.value && index < digits.length - 1) digits[index + 1].focus();
+            const full = [...digits].map(d => d.value).join('');
+            if (full.length === 6) setTimeout(() => verifyOtp(), 250);
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                digits[index - 1].focus();
+                digits[index - 1].value = '';
+                digits[index - 1].style.borderColor = '';
+            }
+            if (e.key === 'ArrowLeft' && index > 0) { e.preventDefault(); digits[index - 1].focus(); }
+            if (e.key === 'ArrowRight' && index < digits.length - 1) { e.preventDefault(); digits[index + 1].focus(); }
+        });
+
+        input.addEventListener('focus', (e) => {
+            e.target.select();
+            try { e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
+        });
+
+        input.addEventListener('paste', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const pasted = (e.clipboardData || window.clipboardData).getData('text');
+            applyAndMaybeVerify(pasted);
+            const n = String(pasted).replace(/\D/g, '').length;
+            if (n >= 6) digits[5]?.focus();
+            else if (digits[n]) digits[n].focus();
+        });
+    });
+
+    const row = document.getElementById('otp-digits-row');
+    if (row && row.dataset.otpBound !== '1') {
+        row.dataset.otpBound = '1';
+        row.addEventListener('paste', (e) => {
+            e.preventDefault();
+            applyAndMaybeVerify((e.clipboardData || window.clipboardData).getData('text'));
+        });
+    }
+}
+
+/** يمنع تغطية الكيبورد لحقول التسجيل */
+function setupKeyboardAvoidance() {
+    if (window._kbAvoidBound) return;
+    window._kbAvoidBound = true;
+
+    const markKeyboard = (open) => {
+        document.querySelectorAll('.register-screen, .login-screen, .otp-screen').forEach(el => {
+            el.classList.toggle('keyboard-open', !!open);
+        });
+    };
+
+    document.addEventListener('focusin', (e) => {
+        const t = e.target;
+        if (!t || !t.matches || !t.matches('input, textarea, select')) return;
+        markKeyboard(true);
+        setTimeout(() => {
+            try {
+                t.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+            } catch (_) {
+                try { t.scrollIntoView(true); } catch (__) {}
+            }
+        }, 280);
+    });
+
+    document.addEventListener('focusout', () => {
+        setTimeout(() => {
+            const ae = document.activeElement;
+            if (!ae || !ae.matches || !ae.matches('input, textarea, select')) markKeyboard(false);
+        }, 150);
+    });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            const ae = document.activeElement;
+            if (ae && ae.matches && ae.matches('input, textarea')) {
+                try { ae.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (_) {}
+            }
+        });
+    }
+}
+
+
 
 async function logout() {
     const confirmed = await showConfirmDialog({
@@ -23971,6 +24688,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initWcpSelects();
     applyTranslations();
     setupRegistrationValidation();
+    setupOtpDigitInputs();
     document.documentElement.lang = currentLang;
     document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     loadFromCloud().catch(() => {});
